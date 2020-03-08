@@ -25,6 +25,7 @@ public class Interface extends Initialiser {
 		Dog d = new Dog("Max", 10);
 		
 		d.sayAll();
+		d.testWorks();
 		while ( run ) {
 			run = consent();
 		}
