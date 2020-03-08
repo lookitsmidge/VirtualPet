@@ -7,6 +7,9 @@ public class Cat extends Animal{
 		super(name, age);
 	}
 	
+	/**
+	 * This is a method to test shit
+	 */
 	public void testWorks() {
 		print("CAT", "Name: " + getName() + ", Age: " + getAge());
 	}
