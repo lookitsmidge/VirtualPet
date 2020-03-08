@@ -7,8 +7,6 @@ public class Dog extends Animal {
 		super(name, age);
 		
 	}
-	public void sayAll() {
-		print("[DOG]", "My Name is: " + getName() + ", My Age is: " + getAge());
 	public void testWorks() {
 		print("DOG", "My Name is: " + getName() + ", My Age is: " + getAge());
 	}
