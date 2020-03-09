@@ -1,5 +1,5 @@
 package animals;
-import Utilities.ProcessorTemplate;// this  is so that I can have all of my print statements and stuff
+import Utilities.ProcessorTemplate;// this  is so that I can have all of my print statements and stuff.
 public abstract class Animal extends ProcessorTemplate {
 	//these are the universal attributes of all of the animals that are going to be created
 	private String name;
