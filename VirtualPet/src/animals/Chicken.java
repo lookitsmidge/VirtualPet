@@ -12,7 +12,7 @@ public class Chicken extends Animal {
 	}
 
 	public void testWorks() {
-		print("CHICKEN", "Name: " + getName() + ", Age: " + getAge());
+		printt("CHICKEN", "Name: " + getName() + ", Age: " + getAge());
 	}
 
 	@Override

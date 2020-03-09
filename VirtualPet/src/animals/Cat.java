@@ -11,7 +11,7 @@ public class Cat extends Animal{
 	 * This is a method to test shit
 	 */
 	public void testWorks() {
-		print("CAT", "Name: " + getName() + ", Age: " + getAge());
+		printt("CAT", "Name: " + getName() + ", Age: " + getAge());
 	}
 	//randomise play with toy responses
 

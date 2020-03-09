@@ -11,7 +11,7 @@ public class Hamster extends Animal {
 	 * This is a method to test if the class works
 	 */
 	public void testWorks() {
-		print("HAMSTER", "Name: " + getName() + ", Age: " + getAge());
+		printt("HAMSTER", "Name: " + getName() + ", Age: " + getAge());
 	}
 
 	@Override

@@ -8,11 +8,11 @@ public class Dog extends Animal {
 		
 	}
 	public void testWorks() {
-		print("DOG", "My Name is: " + getName() + ", My Age is: " + getAge());
+		printt("DOG", "My Name is: " + getName() + ", My Age is: " + getAge());
 	}
 	@Override
 	public void speak() {
-		// TODO Auto-generated method stub
+		print("Woooooof!");
 		
 	}
 	@Override

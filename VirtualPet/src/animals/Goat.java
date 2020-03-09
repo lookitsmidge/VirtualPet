@@ -12,7 +12,7 @@ public class Goat extends Animal {
 	}
 
 	public void testWorks() {
-		print("DOLPHIN", "Name: " + getName() + ", Age: " + getAge());
+		printt("DOLPHIN", "Name: " + getName() + ", Age: " + getAge());
 	}
 
 	@Override
