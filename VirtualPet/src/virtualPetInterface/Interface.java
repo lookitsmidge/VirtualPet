@@ -38,6 +38,7 @@ public class Interface extends Initialiser {
 		
 		//d.testWorks();
 		//commented out to test storage solution for pets
+		
 		do{
 			run = consent();
 			
@@ -47,6 +48,7 @@ public class Interface extends Initialiser {
 	//this method need comments vetted DRASTICALLY
 	//this method is for when animal is selected - to interact
 	public boolean consent() {
+		boolean runNext = true;
 		//aim is to take input - is it end / finish / stop / close / exit / leave / end it all
 		// if command - goes to check command - command has /
 		// if conversation text ( not part of list for ending life iteself ) - call other method
@@ -59,7 +61,6 @@ public class Interface extends Initialiser {
 		
 		//check if command - if so check if end command, if not command then chat mode activate - continue
 		if ( CP.isCommand( userInput ) ) {
-			boolean runNext = true;
 			//user has inputted a command - starts with a /
 			//need to get rid of /
 			userInput = userInput.substring( 1, userInput.length() ); //- gets rid of slash
