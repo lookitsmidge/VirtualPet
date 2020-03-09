@@ -3,7 +3,7 @@ package animals;
 public class Chicken extends Animal {
 
 	/**
-	 * This is the constructor for the dolphin animal
+	 * This is the constructor for the goat animal
 	 * @param name
 	 * @param age
 	 */
