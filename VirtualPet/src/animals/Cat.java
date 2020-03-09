@@ -14,4 +14,40 @@ public class Cat extends Animal{
 		print("CAT", "Name: " + getName() + ", Age: " + getAge());
 	}
 	//randomise play with toy responses
+
+	@Override
+	public void speak() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eat() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void showLove() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sleep() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void wake() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		
+	}
 }
