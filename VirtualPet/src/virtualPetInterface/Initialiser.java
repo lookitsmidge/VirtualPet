@@ -21,13 +21,4 @@ public abstract class Initialiser extends ProcessorTemplate {
 	public Initialiser() {
 		in = new Scanner(System.in);
 	}
-	
-	/**
-	 * This method is to check if the input is a command or not
-	 * @param input
-	 * @return ( input.charAt(0) == '/' )
-	 */
-	public boolean isCommand(String input) {
-		return ( input.charAt(0) == '/' );
-	}
 }

@@ -1,7 +1,11 @@
 package animals;
+import java.util.Random;
 
 public class Dog extends Animal {
-	public String[] toys = {"Stick", "Tennis ball"};
+	public String[] toys = { "Stick", "Tennis ball" };
+	private String[] food = { "Dog Food", "Dog Treat" };
+	private String[] playResponses = { " plays tug of war with you", " plays fetch with you" };
+	Random r  = new Random();
 	
 	public Dog(String name, int age) {
 		super(name, age);
@@ -18,27 +22,27 @@ public class Dog extends Animal {
 	}
 	@Override
 	public void eat() {
-		// TODO Auto-generated method stub
+		print( getName() + " Eats " + food[r.nextInt(food.length)] );
 		
 	}
 	@Override
 	public void showLove() {
 		// TODO Auto-generated method stub
-		
+		print( getName() + " rubs their head on your leg." );
 	}
 	@Override
-	public void sleep() {
+	public void sleep() { // make it so that if asleep doesnt respond...
 		// TODO Auto-generated method stub
-		
+		print( getName() + " falls asleep" );
 	}
 	@Override
 	public void wake() {
 		// TODO Auto-generated method stub
-		
+		print( getName() + " wakes up" );
 	}
 	@Override
 	public void play() {
 		// TODO Auto-generated method stub
-		
+		print( getName() + playResponses[r.nextInt(playResponses.length)] );
 	}
 }
