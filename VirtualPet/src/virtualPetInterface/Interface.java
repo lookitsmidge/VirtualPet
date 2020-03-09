@@ -8,7 +8,7 @@ package virtualPetInterface;
  * @author James Martland 24233781, <insert name and id if you edit code>
  *
  */
-import animals.Dog;
+import animals.*;
 public class Interface extends Initialiser {
 	
 	public static void main(String[] args) {
@@ -21,13 +21,22 @@ public class Interface extends Initialiser {
 	 */
 	public void startSystem() {
 		boolean run = false;// this will determine whether to take another response from the user or not, whether the loop that you will see in a min should end or not
+		//testing how I am going to store all of the objects for the pets
+		Animal[] arrayAnimal = new Animal[6];
 		
-		Dog d = new Dog("Max", 10);
+		arrayAnimal[0] = new Dog("Max",  10);
+		arrayAnimal[1] = new Hamster("Squeak", 2);
+		arrayAnimal[2] = new Cat("Ginger", 3);
 		
-		d.testWorks();
-		while ( run ) {
+		((Dog)arrayAnimal[0]).testWorks(); // this is how you call child methods from a parent class
+		arrayAnimal[0].speak();
+		((Hamster)arrayAnimal[1]).testWorks();
+		
+		//d.testWorks();
+		//commented out to test storage solution for pets
+		/*while ( run ) {
 			run = consent();
-		}
+		}*/
 	}
 	
 	//this method need comments vetted DRASTICALLY

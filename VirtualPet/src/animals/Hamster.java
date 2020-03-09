@@ -4,7 +4,7 @@ public class Hamster extends Animal {
 	
 	public Hamster(String name, int age) {
 		super(name, age);
-		
+		this.type = "Hamster";
 	}
 	
 	/**

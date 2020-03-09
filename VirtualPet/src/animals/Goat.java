@@ -9,6 +9,7 @@ public class Goat extends Animal {
 	 */
 	public Goat(String name, int age) {
 		super(name, age);
+		this.type = "Goat";
 	}
 
 	public void testWorks() {
