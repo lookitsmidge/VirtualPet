@@ -3,52 +3,45 @@ package animals;
 public class Goat extends Animal {
 
 	/**
-	 * This is the constructor for the dolphin animal
+	 * This is the constructor for the goat animal
 	 * @param name
 	 * @param age
 	 */
 	public Goat(String name, int age) {
 		super(name, age);
 		this.type = "Goat";
-	}
-
-	public void testWorks() {
-		printt("DOLPHIN", "Name: " + getName() + ", Age: " + getAge());
-	}
-
+  }	
+	/**
+	* Methods for the goat pet acitons
+	*/
 	@Override
 	public void speak() {
-		// TODO Auto-generated method stub
-		
+		print ("BLEEEAT");
 	}
 
 	@Override
 	public void eat() {
-		// TODO Auto-generated method stub
-		
+		print(getName() + " is eating grass");		
 	}
 
 	@Override
 	public void showLove() {
-		// TODO Auto-generated method stub
+		print("🐐 :D");
 		
 	}
 
-	@Override
+	@Override 
 	public void sleep() {
-		// TODO Auto-generated method stub
-		
+		print(getName() + " has gone to sleep.");	
 	}
 
 	@Override
 	public void wake() {
-		// TODO Auto-generated method stub
-		
+		print(getName() + " has woken up from their sleep.");	
 	}
 
 	@Override
 	public void play() {
-		// TODO Auto-generated method stub
-		
+		print(getName() + " is playing with their beach ball");		
 	}
 }
