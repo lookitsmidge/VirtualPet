@@ -10,7 +10,10 @@ public class Goat extends Animal {
 	public Goat(String name, int age) {
 		super(name, age);
 		this.type = "Goat";
-  }	
+    }	
+	public void testWorks() {
+		printt("GOAT", "My Name is: " + getName() + ", My Age is: " + getAge());
+	}
 	/**
 	* Methods for the goat pet acitons
 	*/
@@ -26,7 +29,7 @@ public class Goat extends Animal {
 
 	@Override
 	public void showLove() {
-		print("🐐 :D");
+		print("ðŸ�� :D");
 		
 	}
 
