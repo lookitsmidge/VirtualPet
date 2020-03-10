@@ -9,10 +9,11 @@ public class Chicken extends Animal {
 	 */
 	public Chicken(String name, int age) {
 		super(name, age);
+		this.type = "Chicken";
 	}
 
 	public void testWorks() {
-		print("CHICKEN", "Name: " + getName() + ", Age: " + getAge());
+		printt("CHICKEN", "Name: " + getName() + ", Age: " + getAge());
 	}
 
 	@Override

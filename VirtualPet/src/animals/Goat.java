@@ -9,12 +9,11 @@ public class Goat extends Animal {
 	 */
 	public Goat(String name, int age) {
 		super(name, age);
-	}
-	
+		this.type = "Goat";
+  }	
 	/**
 	* Methods for the goat pet acitons
 	*/
-	
 	@Override
 	public void speak() {
 		print ("BLEEEAT");

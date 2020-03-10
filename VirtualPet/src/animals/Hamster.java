@@ -4,14 +4,14 @@ public class Hamster extends Animal {
 	
 	public Hamster(String name, int age) {
 		super(name, age);
-		
+		this.type = "Hamster";
 	}
 	
 	/**
 	 * This is a method to test if the class works
 	 */
 	public void testWorks() {
-		print("HAMSTER", "Name: " + getName() + ", Age: " + getAge());
+		printt("HAMSTER", "Name: " + getName() + ", Age: " + getAge());
 	}
 
 	@Override

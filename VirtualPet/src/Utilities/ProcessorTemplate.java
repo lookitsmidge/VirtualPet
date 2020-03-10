@@ -2,13 +2,20 @@ package Utilities;
 
 public abstract class ProcessorTemplate {
 	/**
-	 * This method is to make printing msgs to the command line more bearable
+	 * This method is to make printing msgs to the command line more bearable with a tag
 	 * @param text
 	 */
-	public void print(String tag, String text) {
+	public void printt(String tag, String text) {
 		System.out.println( "[" + tag + "] " + text );
 	}
 	
+	/**
+	 * This method is the custom print method that will be used to effectivley print things to command line
+	 * @param text
+	 */
+	public void print(String text) {
+		System.out.println(text);
+	}
 	/**
 	 * This method is to make printing errors more bearable
 	 * @param errMsg
