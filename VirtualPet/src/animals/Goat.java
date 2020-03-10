@@ -1,5 +1,10 @@
 package animals;
 
+/**
+ * This class is for the pet of type Goat, that is a subclass of the animal class, which is abstract
+ * @author James Martland (Basis Template), Asha Hall ( methods for goat actions )
+ *
+ */
 public class Goat extends Animal {
 
 	/**
@@ -15,7 +20,7 @@ public class Goat extends Animal {
 		printt("GOAT", "My Name is: " + getName() + ", My Age is: " + getAge());
 	}
 	/**
-	* Methods for the goat pet acitons
+	* Methods for the goat pet actions
 	*/
 	@Override
 	public void speak() {
