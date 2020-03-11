@@ -49,9 +49,6 @@ public class Interface extends Initialiser {
 	//this method is for when animal is selected - to interact
 	public boolean consent() {
 		boolean runNext = true;
-		//aim is to take input - is it end / finish / stop / close / exit / leave / end it all
-		// if command - goes to check command - command has /
-		// if conversation text ( not part of list for ending life iteself ) - call other method
 		userInput = "";// clears user input so that last input cannot be tainted
 		userInput = in.nextLine(); // takes input from the user
 		
