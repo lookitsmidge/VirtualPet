@@ -39,4 +39,8 @@ public class FileUtils {
 		}
 		return contents.toString();
 	}
+	
+	public void writeToFile (String toWrite) {
+		
+	}
 }

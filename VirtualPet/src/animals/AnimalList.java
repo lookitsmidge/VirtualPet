@@ -23,9 +23,11 @@ public class AnimalList extends ProcessorTemplate{
 	//animal array
 	Animal[] animalArray;
 	private int nextLocation;
+	private String filePath;
 	
 	//make crappy constructor
 	public AnimalList(String filePath) {
+		this.filePath = filePath;
 		printt("ANIMALLIST", "Initialising stuff... this will either be instantanious or take 3 yrs, not decided yet");
 		//calls readFromFile method and then populates array
 		String animalsFromFile = FU.readFromFile(filePath);
@@ -100,7 +102,7 @@ public class AnimalList extends ProcessorTemplate{
 		for ( int i = index; i < nextLocation - 1; i ++ ) {
 			animalArray[i] = animalArray[i+1];
 		}
-		nextLocation--;
+		nextLocation--; // decrement nextLocation Variable, as this will make the array smaller??
 	}
 	
 	public int getNextLocation() {
@@ -111,5 +113,10 @@ public class AnimalList extends ProcessorTemplate{
 		for (int i=0; i< nextLocation; i++) {
 			print("Name: " + animalArray[i].getName() + ", Age: " + animalArray[i].getAge() + ", Type: " + animalArray[i].getType() );
 		}
+	}
+	
+	public void writeArrayToFile() {
+		// use this.filePath;
+		// iterate through array and for each item - toString - write - NL
 	}
 }
