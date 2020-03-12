@@ -1,6 +1,6 @@
 package animals;
 /**
- * This method is for all of the listing and storing and reading and shit of the animals, which is great, just great
+ * This class is for all of the listing and storing and reading and shit of the animals, which is great, just great
  * @author James Martland
  *
  */
@@ -74,7 +74,10 @@ public class AnimalList extends ProcessorTemplate{
 		
 		//end life.. jk
 	}
-	
+	/**
+	 * This method is to add an object to the list of objects
+	 * @param animal
+	 */
 	public void addToArray(Animal animal) {
 		if (animalArray.length >= nextLocation ) {
 			//the shit show continues
@@ -105,11 +108,11 @@ public class AnimalList extends ProcessorTemplate{
 		nextLocation--; // decrement nextLocation Variable, as this will make the array smaller??
 	}
 	
-	public int getNextLocation() {
+	public final int getNextLocation() {
 		return nextLocation;
 	}
 	
-	public void printArray() {
+	public final void printArray() {
 		for (int i=0; i< nextLocation; i++) {
 			print("Name: " + animalArray[i].getName() + ", Age: " + animalArray[i].getAge() + ", Type: " + animalArray[i].getType() );
 		}
@@ -118,5 +121,10 @@ public class AnimalList extends ProcessorTemplate{
 	public void writeArrayToFile() {
 		// use this.filePath;
 		// iterate through array and for each item - toString - write - NL
+		
+		for ( int i=0; i < nextLocation; i++ ) {
+			
+		}
+		
 	}
 }

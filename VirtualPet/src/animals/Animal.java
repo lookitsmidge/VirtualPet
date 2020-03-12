@@ -58,6 +58,10 @@ public abstract class Animal extends ProcessorTemplate {
 	public final String getName() {
 		return this.name;
 	}
+	/**
+	 * This is to retrieve the type of Animal it is
+	 * @return
+	 */
 	public final String getType() {
 		return this.type;
 	}
