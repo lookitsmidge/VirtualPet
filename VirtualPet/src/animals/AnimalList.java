@@ -74,6 +74,7 @@ public class AnimalList extends ProcessorTemplate{
 		
 		//end life.. jk
 	}
+	
 	/**
 	 * This method is to add an object to the list of objects
 	 * @param animal
@@ -94,6 +95,11 @@ public class AnimalList extends ProcessorTemplate{
 		}
 	}
 	
+	/**
+	 * This method is to remove an item from the array
+	 * Takes the index of the entry to delete from the array
+	 * @param index
+	 */
 	public void deleteFromArray(int index) {
 		//validation of index should have happened before
 		//find index
@@ -108,10 +114,18 @@ public class AnimalList extends ProcessorTemplate{
 		nextLocation--; // decrement nextLocation Variable, as this will make the array smaller??
 	}
 	
+	/**
+	 * This method is to retrieve the next location for the array this is used when adding to the array
+	 * @return
+	 */
 	public final int getNextLocation() {
 		return nextLocation;
 	}
 	
+	/**
+	 * This method is to print out the animal array - this is going to be used for testing whether things work or not - this
+	 * will likely be removed for the final version
+	 */
 	public final void printArray() {
 		for (int i=0; i< nextLocation; i++) {
 			print("Name: " + animalArray[i].getName() + ", Age: " + animalArray[i].getAge() + ", Type: " + animalArray[i].getType() );
