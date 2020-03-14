@@ -19,18 +19,17 @@ public class AnimalList extends ProcessorTemplate{
 	 *  	when importing array - find out how many and then add extra 5 spaces to array count to make sure that the user can do what the fudge they want
 	 *  		(adding more pets wise)
 	 */
-	FileUtils FU = new FileUtils();
+	FileUtils FU;
 	//animal array
 	Animal[] animalArray;
 	private int nextLocation;
-	private String filePath;
 	
 	//make crappy constructor
 	public AnimalList(String filePath) {
-		this.filePath = filePath;
+		FU =  new FileUtils(filePath);
 		printt("ANIMALLIST", "Initialising stuff... this will either be instantanious or take 3 yrs, not decided yet");
 		//calls readFromFile method and then populates array
-		String animalsFromFile = FU.readFromFile(filePath);
+		String animalsFromFile = FU.readFromFile();
 		
 		//manipulate animalsFromFile so that it works kinda
 		
