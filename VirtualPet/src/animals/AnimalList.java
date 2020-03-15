@@ -204,4 +204,12 @@ public class AnimalList extends ProcessorTemplate{
 	public final void setActiveIndex(int index) {
 		this.activeIndex = index;
 	}
+	
+	/**
+	 * This method is to get the value of the animals name and return it
+	 * @return name
+	 */
+	public final String getActivesName() {
+		return animalArray[activeIndex].getName();
+	}
 }

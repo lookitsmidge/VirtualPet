@@ -72,12 +72,12 @@ public class Interface extends Initialiser {
 					AL.printArray();
 					AL.setActiveIndex( CP.getInputIntRng( "Which Animal do you want to load?",
 							0, AL.getNextLocation() ) );
-					
+					printt( "You have chosen: " + AL.getActivesName() );
 				} else {
-					
+					printt( "Command Not Recognised" );
 				}
 			} else {
-				printt( "Command Not Recognised" );
+				// inputs not a command
 			}
 			break;
 		default:
