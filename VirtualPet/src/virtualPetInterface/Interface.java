@@ -11,8 +11,8 @@ package virtualPetInterface;
 import animals.*;
 public class Interface extends Initialiser {
 	
-	private int activeIndex;
-	Animal[] arrayAnimal = new Animal[10];
+	AnimalList AL = new AnimalList("AnimalDetails.csv"); // this is animalList, this is where all of the animal array is stored among other things
+	// move both of these to Initialiser
 	
 	public static void main(String[] args) {
 		printstatic("MAIN", "Running Startup");
@@ -23,26 +23,20 @@ public class Interface extends Initialiser {
 	 * This method is the main method which everything should be ran by
 	 */
 	public void startSystem() {
+		setTag("MAIN");
+		printt("Startup Complete");
 		boolean run = false;// this will determine whether to take another response from the user or not, whether the loop that you will see in a min should end or not
 		//testing how I am going to store all of the objects for the pets
-		
-		arrayAnimal[0] = new Dog("Max",  10);
-		arrayAnimal[1] = new Hamster("Squeak", 2);
-		arrayAnimal[2] = new Cat("Ginger", 3);
-		
-		//Ref: https://stackoverflow.com/questions/11466441/call-a-child-class-method-from-a-parent-class-object
-		((Dog)arrayAnimal[0]).testWorks(); // this is how you call child methods from a parent class
-		arrayAnimal[0].speak();
-		arrayAnimal[0].eat();
-		((Hamster)arrayAnimal[1]).testWorks();
-		
-		//d.testWorks();
-		//commented out to test storage solution for pets
-		
+		AL.addToArray( new Dog("Max",  10) );
+		AL.addToArray( new Hamster("Squeak", 2) );
+		AL.addToArray( new Cat("Ginger", 3) );
+		AL.setActiveIndex(-1); // maybe move this to AnimalList??
 		do{
 			run = consent();
-			
 		} while ( run );
+		printt("Shutting Down ... ");
+		AL.writeArrayToFile();
+		printt( "Shutdown Complete" );
 	}
 	
 	//this method need comments vetted DRASTICALLY
@@ -50,41 +44,80 @@ public class Interface extends Initialiser {
 	public boolean consent() {
 		boolean runNext = true;
 		userInput = "";// clears user input so that last input cannot be tainted
+		printt( "Please Make an input - Use / for a command" );
 		userInput = in.nextLine(); // takes input from the user
 		
 		//now time to see wft the user decided to input
 		userInput = userInput.toLowerCase(); // this should make it easier to 
 		//if statement to figure out what is going on - if convo, command, end
 		
-		//check if command - if so check if end command, if not command then chat mode activate - continue
-		if ( CP.isCommand( userInput ) ) {
-			//user has inputted a command - starts with a /
-			//need to get rid of /
-			userInput = userInput.substring( 1, userInput.length() ); //- gets rid of slash
-			//Maybe use trim??? to make it get rid of unnecessary info ( punct )
-			//now userInput should be plain text to be processed
-			if ( CP.checkPartOf(userInput, arrCloseResponses) ) {
-				runNext = false;
-			} else if ( userInput.equals("help") ) {
-				printt("MAIN", "Commands:\n\thelp\n\tspeak\n\tfeed\n\tplay\n\tsleep\n\twake up");
-			} else if ( userInput.equals("speak") ) {
-				arrayAnimal[activeIndex].speak();
-			} else if ( userInput.equals("feed") ) {
-				arrayAnimal[activeIndex].eat();
-			} else if ( userInput.equals("play") ) {
-				arrayAnimal[activeIndex].play();
-			} else if ( userInput.equals("sleep") ) {
-				arrayAnimal[activeIndex].sleep();
-			} else if ( userInput.equals("wake up") ) {
-				arrayAnimal[activeIndex].wake();
+		switch (AL.getActiveIndex()) {
+		case -1:
+			//no pet selected
+			//command is select pet - create pet
+			if (CP.isCommand( userInput ) ) {
+				//getting rid of the slash
+				userInput = userInput.substring( 1, userInput.length() );
+				
+				if ( CP.checkPartOf(userInput, arrCloseResponses) ) {
+					runNext = false;
+				} else if ( userInput.equals("create") ) {
+					//make a new animal
+					
+				} else if ( userInput.equals("existing") ) {
+					// load an existing animal
+					
+					// use of ids?? random generated??
+					// need a search
+					AL.printArray();
+					AL.setActiveIndex( CP.getInputIntRng( "Which Animal do you want to load?",
+							0, AL.getNextLocation() ) );
+					
+				} else {
+					
+				}
 			} else {
-				printt("MAIN", "Command Not Recognised");
+				printt( "Command Not Recognised" );
 			}
-			
-		} else {
-			//so if it is just an input to the pet
-			//now to return the phrase that the pet says, a random amount of times??
+		default:
+			//index is chosen
+			// pet is chosen
+			//check if command - if so check if end command, if not command then chat mode activate - continue
+			if ( CP.isCommand( userInput ) ) {
+				//user has inputted a command - starts with a /
+				//need to get rid of /
+				userInput = userInput.substring( 1, userInput.length() ); //- gets rid of slash
+				//Maybe use trim??? to make it get rid of unnecessary info ( punct )
+				//now userInput should be plain text to be processed
+				if ( CP.checkPartOf(userInput, arrCloseResponses) ) {
+					
+					runNext = false;
+				} else if ( userInput.equals("help") ) {
+					printt("Commands:\n\thelp\n\tspeak\n\tfeed\n\tplay\n\tsleep\n\twake up\n\tlog out");
+				} else if ( userInput.equals("speak") ) {
+					AL.speak();
+				} else if ( userInput.equals("feed") ) {
+					AL.eat();
+				} else if ( userInput.equals("play") ) {
+					AL.play();
+				} else if ( userInput.equals("sleep") ) {
+					AL.sleep();
+				} else if ( userInput.equals("wake up") ) {
+					AL.wake();
+				} else if ( userInput.equals("log out") ) {
+					AL.setActiveIndex(-1);
+					//this should go back to the other case
+				} else {
+					printt("Command Not Recognised");
+				}
+					
+			} else {
+				//so if it is just an input to the pet
+				//now to return the phrase that the pet says, a random amount of times??
+			}
+				
 		}
+		
 		return runNext;
 	}
 }

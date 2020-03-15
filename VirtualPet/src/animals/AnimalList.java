@@ -1,13 +1,12 @@
 package animals;
+import utilities.*;
+import java.io.IOException;
 /**
- * This class is for all of the listing and storing and reading and shit of the animals, which is great, just great
+ * This class holds the animal array & all of its functions
+ * and is the way that all of the animals will be accessed
  * @author James Martland
  *
  */
-//NB NB if anyone at all edits this add your name to the author thing, if not the fair doos, but we need to vet these comments desperatly
-// 		I am not having a good night and there is a great change that i am going to overcomment this puppy, its not a puppy, puppies are cute,
-//		this is brutal.... why do i drink
-import Utilities.*;
 public class AnimalList extends ProcessorTemplate{
 
 	/**
@@ -20,13 +19,21 @@ public class AnimalList extends ProcessorTemplate{
 	 *  		(adding more pets wise)
 	 */
 	FileUtils FU;
-	//animal array
-	Animal[] animalArray;
+	private Animal[] animalArray;
 	private int nextLocation;
+	private int activeIndex; // this is the users current pet to interact with
 	
-	//make crappy constructor
+	
+	/**
+	 * This constructor reads from file set in parameter
+	 * 		makes new array
+	 * 		adds to array from file
+	 * 		
+	 * @param filePath
+	 */
 	public AnimalList(String filePath) {
 		FU =  new FileUtils(filePath);
+		setTag("ANIMALLIST");
 		printt("ANIMALLIST", "Initialising stuff... this will either be instantanious or take 3 yrs, not decided yet");
 		//calls readFromFile method and then populates array
 		String animalsFromFile = FU.readFromFile();
@@ -38,6 +45,7 @@ public class AnimalList extends ProcessorTemplate{
 		animalArray = new Animal[ arrAnimalsFromFile.length + 5 ]; // initialsises the array with the amount of space it needs plus 5 for extra comfort
 		nextLocation = 0;
 		
+		//this for loop is to add any animals that are read from array
 		for ( int i = 0; i < arrAnimalsFromFile.length; i++ ) {
 			//this loop will iterate, add animals from formatting and end life itself - if it is given a chance
 			String[] animalTmp = arrAnimalsFromFile[i].split(",");
@@ -114,6 +122,66 @@ public class AnimalList extends ProcessorTemplate{
 	}
 	
 	/**
+	 * This method is to print out the animal array - this is going to be used for testing whether things work or not - this
+	 * will likely be removed for the final version
+	 */
+	public final void printArray() {
+		for (int i=0; i< nextLocation; i++) {
+			print("No. " + i + "Name: " + animalArray[i].getName() + ", Age: " + animalArray[i].getAge() + ", Type: " + animalArray[i].getType() );
+		}
+	}
+	
+	/**
+	 * This method is to write the array that is stored in memory to the file defined
+	 */
+	public void writeArrayToFile() {
+		try {
+			FU.initWrite();
+			for ( int i=0; i < nextLocation; i++ ) {
+				FU.write( animalArray[i].toString() );
+			}
+			FU.finishWrite();
+		} catch ( IOException e ) {
+			errPrint( "Error when writing to file: " + e );
+		}		
+	}
+	
+	/**
+	 * This method is to make the animal at the active index speak
+	 */
+	public final void speak() {
+		animalArray[activeIndex].speak();
+	}
+	
+	/**
+	 * This method is to make the animal at the active index eat
+	 */
+	public final void eat() {
+		animalArray[activeIndex].eat();
+	}
+	
+	/**
+	 * This method is to make the animal at the active index play
+	 */
+	public final void play() {
+		animalArray[activeIndex].play();
+	}
+	
+	/**
+	 * This method is to make the animal at the active index sleep
+	 */
+	public final void sleep() {
+		animalArray[activeIndex].sleep();
+	}
+	
+	/**
+	 * This method is to make the animal at the active index wake
+	 */
+	public final void wake() {
+		animalArray[activeIndex].wake();
+	}
+	
+	/**
 	 * This method is to retrieve the next location for the array this is used when adding to the array
 	 * @return
 	 */
@@ -122,22 +190,18 @@ public class AnimalList extends ProcessorTemplate{
 	}
 	
 	/**
-	 * This method is to print out the animal array - this is going to be used for testing whether things work or not - this
-	 * will likely be removed for the final version
+	 * This is a method to retrieve the value of the class variable activeIndex
+	 * @return
 	 */
-	public final void printArray() {
-		for (int i=0; i< nextLocation; i++) {
-			print("Name: " + animalArray[i].getName() + ", Age: " + animalArray[i].getAge() + ", Type: " + animalArray[i].getType() );
-		}
+	public final int getActiveIndex() {
+		return this.activeIndex;
 	}
 	
-	public void writeArrayToFile() {
-		// use this.filePath;
-		// iterate through array and for each item - toString - write - NL
-		
-		for ( int i=0; i < nextLocation; i++ ) {
-			
-		}
-		
+	/**
+	 * This method is to set the value of the class variable activeIndex
+	 * @param index
+	 */
+	public final void setActiveIndex(int index) {
+		this.activeIndex = index;
 	}
 }

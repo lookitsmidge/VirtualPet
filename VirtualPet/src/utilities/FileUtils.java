@@ -1,4 +1,4 @@
-package Utilities;
+package utilities;
 /**
  * The aim of this method is to enable me to read and write animals to a file and back from a file
  * @author James Martland
@@ -11,12 +11,16 @@ public class FileUtils extends ProcessorTemplate {
 	private String filePath;
 	private boolean fileWriteOnline; // this var is to tell the program if the writer has been set up correctly
 	private FileWriter writer;
+	private String spacer;
 	//animal has age, name, type (happiness and fitness but nah) - also id???
 	//method to write to a file (CSV)
 	
 	//method to read from a file (CSV) - same CSV
 	public FileUtils(String filePath) {
-		printt( "FILEUTILS", "Running Constructor" );
+		setTag( "FILEUTILS" );
+		printt( "Running Constructor" );
+		printt( "[CONF] Default Spacer Set to: NewLine" );
+		this.spacer = "\n";
 		//try statement to make a file and stuff
 		this.filePath = filePath;
 		this.fileWriteOnline = false;
@@ -36,6 +40,12 @@ public class FileUtils extends ProcessorTemplate {
 		}
 		// - autonomous file opening
 	}
+	
+	/**
+	 * This method is to read the items stored in the file that is set up
+	 * this will return this
+	 * @return contents from file
+	 */
 	public String readFromFile() {
 		in = null;//sets it to be nothing
 		// use stringbuilder to make it more efficient
@@ -64,12 +74,33 @@ public class FileUtils extends ProcessorTemplate {
 	}
 	
 	/**
+	 * This method is to modify the spacer that is used when writing to the file
+	 * @param input - what to set spacer to
+	 */
+	public void setSpacer(String input) {
+		if (spacer.contentEquals(",") ) {
+			printt( "[CONF] Cannot set Spacer to comma, comma already used" );
+		} else {
+			this.spacer = input;
+			printt( "[CONF] Spacer Set To: " + input );
+		}
+	}
+	
+	/**
+	 * This method is to be used with the read function to output an array of data items that are correlated based on the spacer
+	 * @param input
+	 * @return input - but split into string array by spacer
+	 */
+	public String[] toArray(String input) {
+		return input.split(this.spacer);
+	}
+	/**
 	 * This method Initialises the filereader
 	 * @param toWrite
 	 * @throws IOException 
 	 */
 	public void initWrite() throws IOException {
-		printt( "FILEUTILS", "File is being set up" );
+		printt( "File is being set up" );
 		if ( !this.fileWriteOnline ) {			
 			
 		} else if ( this.fileWriteOnline ) {
@@ -81,7 +112,7 @@ public class FileUtils extends ProcessorTemplate {
 		}
 		this.writer = new FileWriter(this.filePath);
 		this.fileWriteOnline = true;
-		printt( "FILEUTILS", "File has been set up");
+		printt( "File has been set up");
 	}
 	
 	/**
@@ -90,10 +121,12 @@ public class FileUtils extends ProcessorTemplate {
 	 * @throws IOException
 	 */
 	public void write(String item) throws IOException {
-		printt( "FILEUTILS", "Writing: " + item );
+		printt( "Writing: " + item );
 		if ( this.fileWriteOnline ) {
 			//write ok
 			writer.write(item);
+			writer.write(this.spacer);
+			printt("\tWritten");
 		} else {
 			// Doesnt Work
 			finishWrite();// test this
@@ -109,7 +142,7 @@ public class FileUtils extends ProcessorTemplate {
 			//ready for closing file
 			writer.close();
 			this.fileWriteOnline = false;
-			printt("FILEUTILS", "File has been successfully written to");
+			printt("File has been successfully written to");
 		} else {
 			//file not opened
 		}
