@@ -43,6 +43,12 @@ public class CommandProcessor extends ProcessorTemplate {
 		return temp;
 	}
 	
+	public String getInputLC(String Text) {
+		//yet to properly validate input for escape characters and commas - would break system
+		printt( "Please Make an input - Use / for a command" );
+		return ( in.nextLine() ).toLowerCase(); // i suppose i could trim / strip it here??
+	}
+	
 	/**
 	 * This method is aimed to get an input from the user that has to be an integer
 	 * @param text

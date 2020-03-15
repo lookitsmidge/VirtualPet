@@ -44,11 +44,9 @@ public class Interface extends Initialiser {
 	public boolean consent() {
 		boolean runNext = true;
 		userInput = "";// clears user input so that last input cannot be tainted
-		printt( "Please Make an input - Use / for a command" );
-		userInput = in.nextLine(); // takes input from the user
+		userInput = CP.getInputLC( "Please Make an input - Use / for a command" ); // takes input from the user
 		
 		//now time to see wft the user decided to input
-		userInput = userInput.toLowerCase(); // this should make it easier to 
 		//if statement to figure out what is going on - if convo, command, end
 		
 		switch (AL.getActiveIndex()) {
