@@ -79,6 +79,7 @@ public class Interface extends Initialiser {
 			} else {
 				printt( "Command Not Recognised" );
 			}
+			break;
 		default:
 			//index is chosen
 			// pet is chosen
@@ -115,7 +116,7 @@ public class Interface extends Initialiser {
 				//so if it is just an input to the pet
 				//now to return the phrase that the pet says, a random amount of times??
 			}
-				
+			break;
 		}
 		
 		return runNext;
