@@ -139,7 +139,6 @@ public class CommandProcessor extends ProcessorTemplate {
 			} catch ( NumberFormatException exc) {
 				printt("INPUT_RNG", "That is not an integer");
 			} finally {
-				printt("INPUT_RNG", "reached Finally");
 				//dont really need this i think
 			}
 			

@@ -182,6 +182,15 @@ public class AnimalList extends ProcessorTemplate{
 		animalArray[activeIndex].wake();
 	}
 	
+	//JOE - UNCOMMENT THIS WHEN MAKING METHODS
+	/**
+	 * This method is to make the animal do something special
+	 */
+	public final void special() {
+		//animalArray[activeIndex].special();
+		printt( "Joe needs to implement this " );
+	}
+	
 	/**
 	 * This method is to retrieve the next location for the array this is used when adding to the array
 	 * @return

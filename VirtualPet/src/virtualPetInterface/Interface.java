@@ -144,7 +144,10 @@ public class Interface extends Initialiser {
 					AL.sleep();
 				} else if ( userInput.equals("wake up") ) {
 					AL.wake();
+				} else if ( userInput.equals("special") ) {
+					AL.special();
 				} else if ( userInput.equals("log out") ) {
+					printt( "Logging out of pet" );
 					AL.setActiveIndex(-1);
 					//this should go back to the other case
 				} else {
