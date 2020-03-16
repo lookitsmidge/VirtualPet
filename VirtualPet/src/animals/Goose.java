@@ -49,4 +49,8 @@ public class Goose extends Animal {
 		print(getName() + "is playing with a squeaky toy");
 		
 	}
+	@Override
+	public void special() {
+		
+	}
 }

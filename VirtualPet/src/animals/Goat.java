@@ -52,4 +52,8 @@ public class Goat extends Animal {
 	public void play() {
 		print(getName() + " is playing with their beach ball");		
 	}
+	@Override
+	public void special() {
+		
+	}
 }

@@ -50,4 +50,8 @@ public class Dog extends Animal {
 		// TODO Auto-generated method stub
 		print( getName() + playResponses[r.nextInt(playResponses.length)] );
 	}
+	@Override
+	public void special() {
+		
+	}
 }

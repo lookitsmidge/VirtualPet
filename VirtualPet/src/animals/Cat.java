@@ -1,8 +1,8 @@
 package animals;
-
+import java.util.Random;
 public class Cat extends Animal{
 	String[] toys = {"Wool", "lazer"};
-	
+	String[] birds = {"Bluetit", "Woodpecker", "Eagle", "Vulture", "Emu", "Dodo"};
 	public Cat(String name, int age) {
 		super(name, age);
 		this.type = "Cat";
@@ -50,5 +50,11 @@ public class Cat extends Animal{
 	public void play() {
 		print(getName() + "is chasing a piece of string");
 		
+	}
+	
+	@Override
+	public void special() {
+		int rnd = new Random().nextInt(birds.length);
+		print(getName() + "brings back a" + rnd);
 	}
 }
