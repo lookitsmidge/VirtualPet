@@ -51,7 +51,19 @@ public class CommandProcessor extends ProcessorTemplate {
 	public String getInputLC(String Text) {
 		//yet to properly validate input for escape characters and commas - would break system
 		printt( Text );
-		return ( in.nextLine() ).toLowerCase(); // i suppose i could trim / strip it here??
+		//must be at least one char long - not blank
+		String temp;
+		boolean runLoop = true;
+		do {
+			temp = ( in.nextLine() ).toLowerCase(); // i suppose i could trim / strip it here??
+			if ( temp.isEmpty() ) {
+				// loop again
+				printt( "This is not a valid input - Must input something" );
+			} else {
+				runLoop = false;
+			}
+		} while ( runLoop );
+		return temp;
 	}
 	
 	public String getInputPartOf(String text, String[] listOfResponses) {
