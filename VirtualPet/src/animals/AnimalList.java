@@ -34,7 +34,7 @@ public class AnimalList extends ProcessorTemplate{
 	public AnimalList(String filePath) {
 		FU =  new FileUtils(filePath);
 		setTag("ANIMALLIST");
-		printt("ANIMALLIST", "Initialising stuff... this will either be instantanious or take 3 yrs, not decided yet");
+		printt("Initialising stuff... this will either be instantanious or take 3 yrs, not decided yet");
 		//calls readFromFile method and then populates array
 		//this is to test to see if this works
 		String[] arrAnimalsFromFile = FU.toArray( FU.readFromFile() );
