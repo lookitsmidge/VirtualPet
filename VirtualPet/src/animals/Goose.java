@@ -16,37 +16,37 @@ public class Goose extends Animal {
 
 	@Override
 	public void speak() {
-		// TODO Auto-generated method stub
+		print("HONK!");
 		
 	}
 
 	@Override
 	public void eat() {
-		// TODO Auto-generated method stub
+		print(getName() + "is eating seeds");
 		
 	}
 
 	@Override
 	public void showLove() {
-		// TODO Auto-generated method stub
+		print("Honk <3");
 		
 	}
 
 	@Override
 	public void sleep() {
-		// TODO Auto-generated method stub
+		print(getName() + "falls asleep");
 		
 	}
 
 	@Override
 	public void wake() {
-		// TODO Auto-generated method stub
+		print(getName() + "wakes up");
 		
 	}
 
 	@Override
 	public void play() {
-		// TODO Auto-generated method stub
+		print(getName() + "is playing with a squeaky toy");
 		
 	}
 }
