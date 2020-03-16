@@ -1,17 +1,17 @@
 package animals;
 
-public class Hamster extends Animal {
+public class Goose extends Animal {
 	
-	public Hamster(String name, int age) {
+	public Goose(String name, int age) {
 		super(name, age);
-		this.type = "Hamster";
+		this.type = "Goose";
 	}
 	
 	/**
 	 * This is a method to test if the class works
 	 */
 	public void testWorks() {
-		printt("HAMSTER", "Name: " + getName() + ", Age: " + getAge());
+		printt("GOOSE", "Name: " + getName() + ", Age: " + getAge());
 	}
 
 	@Override

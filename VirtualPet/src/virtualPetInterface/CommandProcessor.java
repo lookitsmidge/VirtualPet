@@ -67,7 +67,7 @@ public class CommandProcessor extends ProcessorTemplate {
 			}
 		} while ( true ); // this will repeat until input is valid
 		
-		return "notyet";
+		return input;
 	}
 	/**
 	 * This method is aimed to get an input from the user that has to be an integer

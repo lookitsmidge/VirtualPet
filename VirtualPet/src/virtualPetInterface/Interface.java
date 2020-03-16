@@ -28,7 +28,7 @@ public class Interface extends Initialiser {
 		boolean run = false;// this will determine whether to take another response from the user or not, whether the loop that you will see in a min should end or not
 		//testing how I am going to store all of the objects for the pets
 //		AL.addToArray( new Dog("Max",  10) );
-//		AL.addToArray( new Hamster("Squeak", 2) );
+//		AL.addToArray( new Goose("Squeak", 2) );
 //		AL.addToArray( new Cat("Ginger", 3) );
 		AL.setActiveIndex(-1); // maybe move this to AnimalList??
 		do{
@@ -89,8 +89,8 @@ public class Interface extends Initialiser {
 										0, Integer.MAX_VALUE) )
 								);
 						break;
-					case "hamster":
-						AL.addToArray( new Hamster(CP.capitalise( CP.getInputLC("Please Input Name") ), 
+					case "goose":
+						AL.addToArray( new Goose(CP.capitalise( CP.getInputLC("Please Input Name") ), 
 								CP.getInputIntRng("In age", 
 										0, Integer.MAX_VALUE) )
 								);

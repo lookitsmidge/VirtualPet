@@ -22,7 +22,7 @@ public class AnimalList extends ProcessorTemplate{
 	private Animal[] animalArray;
 	private int nextLocation;
 	private int activeIndex; // this is the users current pet to interact with
-	public String[] animalTypesLC = {"dog", "cat", "chicken", "goat", "hamster"};
+	public String[] animalTypesLC = {"dog", "cat", "chicken", "goat", "goose"};
 	
 	/**
 	 * This constructor reads from file set in parameter
@@ -66,9 +66,9 @@ public class AnimalList extends ProcessorTemplate{
 				// make a goat
 				Goat gTemp = new Goat( animalTmp[1], Integer.parseInt(animalTmp[2]) );
 				addToArray( gTemp );
-			} else if ( animalTmp[0].equals("Hamster") ) {
-				// make a hamster
-				Hamster hTemp = new Hamster( animalTmp[1], Integer.parseInt(animalTmp[2]) );
+			} else if ( animalTmp[0].equals("goose") ) {
+				// make a goose
+				Goose hTemp = new Goose( animalTmp[1], Integer.parseInt(animalTmp[2]) );
 				addToArray( hTemp );
 			} else {
 				//the type isnt available
