@@ -55,6 +55,6 @@ public class Cat extends Animal{
 	@Override
 	public void special() {
 		int rnd = new Random().nextInt(birds.length);
-		print(getName() + "brings back a" + rnd);
+		print(getName() + "brings back a " + birds[rnd]);
 	}
 }
