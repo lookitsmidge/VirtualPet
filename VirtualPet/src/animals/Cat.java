@@ -18,37 +18,37 @@ public class Cat extends Animal{
 
 	@Override
 	public void speak() {
-		// TODO Auto-generated method stub
+		print("Nyaa");
 		
 	}
 
 	@Override
 	public void eat() {
-		// TODO Auto-generated method stub
+		print(getName() + "is eating fish");
 		
 	}
 
 	@Override
 	public void showLove() {
-		// TODO Auto-generated method stub
+		print("Purr <3");
 		
 	}
 
 	@Override
 	public void sleep() {
-		// TODO Auto-generated method stub
+		print(getName() + "falls asleep");
 		
 	}
 
 	@Override
 	public void wake() {
-		// TODO Auto-generated method stub
+		print(getName() + "wakes up");
 		
 	}
 
 	@Override
 	public void play() {
-		// TODO Auto-generated method stub
+		print(getName() + "is chasing a piece of string");
 		
 	}
 }
