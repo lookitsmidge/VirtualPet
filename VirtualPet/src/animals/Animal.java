@@ -31,6 +31,8 @@ public abstract class Animal extends ProcessorTemplate {
 
 	public abstract void play();
 	
+	public abstract void special();
+	
 	/**
 	 * This is to set the value of the class variable age
 	 * @param age
