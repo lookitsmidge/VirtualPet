@@ -22,7 +22,7 @@ public class AnimalList extends ProcessorTemplate{
 	private Animal[] animalArray;
 	private int nextLocation;
 	private int activeIndex; // this is the users current pet to interact with
-	
+	public String[] animalTypesLC = {"dog", "cat", "chicken", "goat", "hamster"};
 	
 	/**
 	 * This constructor reads from file set in parameter
@@ -36,14 +36,15 @@ public class AnimalList extends ProcessorTemplate{
 		setTag("ANIMALLIST");
 		printt("ANIMALLIST", "Initialising stuff... this will either be instantanious or take 3 yrs, not decided yet");
 		//calls readFromFile method and then populates array
-		String animalsFromFile = FU.readFromFile();
-		
-		//manipulate animalsFromFile so that it works kinda
-		
-		String[] arrAnimalsFromFile = animalsFromFile.split("\r");
+		//this is to test to see if this works
+		String[] arrAnimalsFromFile = FU.toArray( FU.readFromFile() );
 		
 		animalArray = new Animal[ arrAnimalsFromFile.length + 5 ]; // initialsises the array with the amount of space it needs plus 5 for extra comfort
 		nextLocation = 0;
+		
+		//Make this a switch - much more efficient
+		//see Interface - basically copy code
+		//make efficient method as code is duplicated
 		
 		//this for loop is to add any animals that are read from array
 		for ( int i = 0; i < arrAnimalsFromFile.length; i++ ) {
@@ -77,7 +78,7 @@ public class AnimalList extends ProcessorTemplate{
 		} // at this point everything should have been made and stuff - added to the array
 		
 		//all animals should have been added to the array - bc of the for loop
-		
+		printArray();
 		
 		//end life.. jk
 	}

@@ -20,7 +20,7 @@ public class FileUtils extends ProcessorTemplate {
 		setTag( "FILEUTILS" );
 		printt( "Running Constructor" );
 		printt( "[CONF] Default Spacer Set to: NewLine" );
-		this.spacer = "\n";
+		this.spacer = "\r";
 		//try statement to make a file and stuff
 		this.filePath = filePath;
 		this.fileWriteOnline = false;

@@ -61,6 +61,45 @@ public class Interface extends Initialiser {
 					runNext = false;
 				} else if ( userInput.equals("create") ) {
 					//make a new animal
+					//get type of animal to create
+					String type = CP.getInputPartOf("Please Input The Type Of Pet To Create",
+							AL.animalTypesLC);
+					switch ( type ) {
+					case "cat":
+						AL.addToArray( new Cat(CP.capitalise( CP.getInputLC("Please Input Name") ), 
+								CP.getInputIntRng("Input Pets age",
+										0, Integer.MAX_VALUE) ) 
+								);
+						break;
+					case "chicken":
+						AL.addToArray( new Chicken(CP.capitalise( CP.getInputLC("Please Input Name") ), 
+								CP.getInputIntRng("Input Pets age", 
+										0, Integer.MAX_VALUE) )
+								);
+						break;
+					case "dog":
+						AL.addToArray( new Dog(CP.capitalise( CP.getInputLC("Please Input Name") ), 
+								CP.getInputIntRng("Input Pets age", 
+										0, Integer.MAX_VALUE) )
+								);
+						break;
+					case "goat":
+						AL.addToArray( new Goat(CP.capitalise( CP.getInputLC("Please Input Name") ), 
+								CP.getInputIntRng("Input Pets age", 
+										0, Integer.MAX_VALUE) )
+								);
+						break;
+					case "hamster":
+						AL.addToArray( new Hamster(CP.capitalise( CP.getInputLC("Please Input Name") ), 
+								CP.getInputIntRng("In age", 
+										0, Integer.MAX_VALUE) )
+								);
+						break;
+					default:
+						printt( "New Type hasnt been added to Interface.java - Contact An Admin" );
+						break;
+					}
+					
 					
 				} else if ( userInput.equals("existing") ) {
 					// load an existing animal
@@ -71,6 +110,8 @@ public class Interface extends Initialiser {
 					AL.setActiveIndex( CP.getInputIntRng( "Which Animal do you want to load?",
 							0, AL.getNextLocation() ) );
 					printt( "You have chosen: " + AL.getActivesName() );
+				} else if ( userInput.equals("help") ) {
+					printt( "Please Either use /create or /existing" );
 				} else {
 					printt( "Command Not Recognised" );
 				}

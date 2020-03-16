@@ -43,12 +43,32 @@ public class CommandProcessor extends ProcessorTemplate {
 		return temp;
 	}
 	
+	/**
+	 * This method is to get an input from the user
+	 * @param Text
+	 * @return userInput - but lowercase
+	 */
 	public String getInputLC(String Text) {
 		//yet to properly validate input for escape characters and commas - would break system
-		printt( "Please Make an input - Use / for a command" );
+		printt( Text );
 		return ( in.nextLine() ).toLowerCase(); // i suppose i could trim / strip it here??
 	}
 	
+	public String getInputPartOf(String text, String[] listOfResponses) {
+		String input;
+		do {
+			input = getInputLC( text );
+			if ( checkPartOf(input, listOfResponses) ) {
+				//input is part of list
+				break;
+			} else {
+				printt( "These are the responses that are acceptable: " + listOfResponses.toString() );
+
+			}
+		} while ( true ); // this will repeat until input is valid
+		
+		return "notyet";
+	}
 	/**
 	 * This method is aimed to get an input from the user that has to be an integer
 	 * @param text
@@ -117,4 +137,13 @@ public class CommandProcessor extends ProcessorTemplate {
 		return output;
 	}
 	
+	/**
+	 * This method is to capitalise words, such as names
+	 * https://stackoverflow.com/questions/3904579/how-to-capitalize-the-first-letter-of-a-string-in-java
+	 * @param input
+	 * @return input - capitalised
+	 */
+	public String capitalise(String input) {
+		return ( input.substring(0, 1).toUpperCase() + input.substring(1) );
+	}
 }
