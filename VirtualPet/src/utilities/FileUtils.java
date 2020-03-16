@@ -94,6 +94,7 @@ public class FileUtils extends ProcessorTemplate {
 	public String[] toArray(String input) {
 		return input.split(this.spacer);
 	}
+	
 	/**
 	 * This method Initialises the filereader
 	 * @param toWrite

@@ -128,7 +128,7 @@ public class AnimalList extends ProcessorTemplate{
 	 */
 	public final void printArray() {
 		for (int i=0; i< nextLocation; i++) {
-			print("No. " + i + "Name: " + animalArray[i].getName() + ", Age: " + animalArray[i].getAge() + ", Type: " + animalArray[i].getType() );
+			print("No. " + i + " Name: " + animalArray[i].getName() + ", Age: " + animalArray[i].getAge() + ", Type: " + animalArray[i].getType() );
 		}
 	}
 	

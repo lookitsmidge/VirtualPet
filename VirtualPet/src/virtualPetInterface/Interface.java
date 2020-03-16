@@ -133,7 +133,7 @@ public class Interface extends Initialiser {
 					
 					runNext = false;
 				} else if ( userInput.equals("help") ) {
-					printt("Commands:\n\thelp\n\tspeak\n\tfeed\n\tplay\n\tsleep\n\twake up\n\tlog out");
+					printt("Commands:\n\thelp\n\tspeak\n\tfeed\n\tplay\n\tsleep\n\twake up\n\tspecial\n\tlog out");
 				} else if ( userInput.equals("speak") ) {
 					AL.speak();
 				} else if ( userInput.equals("feed") ) {
