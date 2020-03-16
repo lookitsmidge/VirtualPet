@@ -187,8 +187,7 @@ public class AnimalList extends ProcessorTemplate{
 	 * This method is to make the animal do something special
 	 */
 	public final void special() {
-		//animalArray[activeIndex].special();
-		printt( "Joe needs to implement this " );
+		animalArray[activeIndex].special();
 	}
 	
 	/**
