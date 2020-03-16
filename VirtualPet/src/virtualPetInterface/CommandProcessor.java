@@ -116,7 +116,7 @@ public class CommandProcessor extends ProcessorTemplate {
 				output = Integer.parseInt(input);// this means it is an integer
 				//now to test the range conditions
 				//the or equal to is for the array - as it starts at 0 - so length is not inclusive
-				if ( output <= high && output > low ) {
+				if ( output < high && output >= low ) {
 					//meets conditions
 					temp = false;
 				} else {

@@ -110,7 +110,7 @@ public class FileUtils extends ProcessorTemplate {
 		} else {
 			//dunno
 		}
-		this.writer = new FileWriter(this.filePath);
+		this.writer = new FileWriter(this.filePath, false);
 		this.fileWriteOnline = true;
 		printt( "File has been set up");
 	}

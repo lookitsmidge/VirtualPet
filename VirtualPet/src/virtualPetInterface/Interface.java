@@ -27,9 +27,9 @@ public class Interface extends Initialiser {
 		printt("Startup Complete");
 		boolean run = false;// this will determine whether to take another response from the user or not, whether the loop that you will see in a min should end or not
 		//testing how I am going to store all of the objects for the pets
-		AL.addToArray( new Dog("Max",  10) );
-		AL.addToArray( new Hamster("Squeak", 2) );
-		AL.addToArray( new Cat("Ginger", 3) );
+//		AL.addToArray( new Dog("Max",  10) );
+//		AL.addToArray( new Hamster("Squeak", 2) );
+//		AL.addToArray( new Cat("Ginger", 3) );
 		AL.setActiveIndex(-1); // maybe move this to AnimalList??
 		do{
 			run = consent();
