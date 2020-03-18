@@ -5,13 +5,13 @@ package virtualPetInterface;
  *
  */
 import java.util.Scanner;
-import Utilities.ProcessorTemplate;
+
+import utilities.ProcessorTemplate;
 
 public abstract class Initialiser extends ProcessorTemplate {
 	String userInput; // this is to reduce cost of taking input
-	Scanner in;// this is the way that we are going to take input from the user for the time being. i will switch this to a GUI input if we ever do it, which should be such fun
 	//create string array see child class
-	String[] arrCloseResponses = { "end", "finish", "stop", "close", "exit", "leave", "end it all" };
+	String[] arrCloseResponses = { "end", "shutdown", "finish", "stop", "close", "exit", "leave", "end it all" };
 	CommandProcessor CP = new CommandProcessor();// this is the class that should do all the checking for the commands for the 
 	
 	
@@ -19,6 +19,6 @@ public abstract class Initialiser extends ProcessorTemplate {
 	 * This is the constructor for this abstract class, this should aim to initialise anything that is needed in the subclass interface
 	 */
 	public Initialiser() {
-		in = new Scanner(System.in);
+		
 	}
 }

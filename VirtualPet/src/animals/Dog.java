@@ -1,6 +1,11 @@
 package animals;
 import java.util.Random;
 
+/**
+ * This class is for the pet of type Dog, that is a subclass of the animal class, which is abstract
+ * @author James Martland
+ *
+ */
 public class Dog extends Animal {
 	public String[] toys = { "Stick", "Tennis ball" };
 	private String[] food = { "Dog Food", "Dog Treat" };
@@ -44,5 +49,9 @@ public class Dog extends Animal {
 	public void play() {
 		// TODO Auto-generated method stub
 		print( getName() + playResponses[r.nextInt(playResponses.length)] );
+	}
+	@Override
+	public void special() {
+		
 	}
 }

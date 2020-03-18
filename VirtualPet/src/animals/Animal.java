@@ -1,10 +1,11 @@
 package animals;
-import Utilities.ProcessorTemplate;// this  is so that I can have all of my print statements and stuff.
+import utilities.ProcessorTemplate;
 public abstract class Animal extends ProcessorTemplate {
 	//these are the universal attributes of all of the animals that are going to be created
 	private String name;
 	private int age;
 	public String type;
+	protected boolean asleep; // to be implemented
 //	protected int happiness = 10; // out of 20
 //	protected int fitness = 5; // out of 10
 	
@@ -30,33 +31,51 @@ public abstract class Animal extends ProcessorTemplate {
 
 	public abstract void play();
 	
+	public abstract void special();
+	
 	/**
 	 * This is to set the value of the class variable age
 	 * @param age
 	 */
-	public void setAge(int age) {
+	public final void setAge(int age) {
 		this.age = age;
 	}
 	/**
 	 * This is to retrieve the value of the class variable age
 	 * @return
 	 */
-	public int getAge() {
+	public final int getAge() {
 		return this.age;
 	}
 	/**
 	 * This is to set the value of the class variable name
 	 * @param name
 	 */
-	public void setName(String name) {
+	public final void setName(String name) {
 		this.name = name;
 	}
 	/**
 	 * This is to retrieve the value of the class variable name
 	 * @return
 	 */
-	public String getName() {
+	public final String getName() {
 		return this.name;
+	}
+	/**
+	 * This is to retrieve the type of Animal it is
+	 * @return
+	 */
+	public final String getType() {
+		return this.type;
+	}
+	/**
+	 * This method is meant to make writing this shit to a file easier
+	 * Putting this in the animal superclass means that all objects that are under this WILL have it
+	 * it is final so nooone overwrites it, because if they do everything will break
+	 * @return this.type + this.name + this.age;
+	 */
+	public final String toString() {
+		return this.type + "," + this.name + "," + this.age ;
 	}
 	
 }
