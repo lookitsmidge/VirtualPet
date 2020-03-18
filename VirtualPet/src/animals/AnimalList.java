@@ -39,7 +39,7 @@ public class AnimalList extends ProcessorTemplate{
 		//this is to test to see if this works
 		String[] arrAnimalsFromFile = FU.toArray( FU.readFromFile() );
 		
-		animalArray = new Animal[ arrAnimalsFromFile.length + 5 ]; // initialsises the array with the amount of space it needs plus 5 for extra comfort
+		animalArray = new Animal[ arrAnimalsFromFile.length + 5 ]; // Initialises the array with the amount of space it needs plus 5 for extra comfort
 		nextLocation = 0;
 		
 		//Make this a switch - much more efficient
@@ -52,31 +52,7 @@ public class AnimalList extends ProcessorTemplate{
 			String[] animalTmp = arrAnimalsFromFile[i].split(",");
 			
 			//I changed this to be a switch - this is much more efficient than the if statement that was here before
-			switch ( animalTmp[0] ) {
-			case "Dog":
-				Dog dTemp = new Dog( animalTmp[1], Integer.parseInt(animalTmp[2]) );//make this more robust btw you idiot
-				addToArray( dTemp );
-				break;
-			case "Cat":
-				Cat cTemp = new Cat( animalTmp[1], Integer.parseInt(animalTmp[2]) );
-				addToArray( cTemp );
-				break;
-			case "Chicken":
-				Chicken chTemp = new Chicken( animalTmp[1], Integer.parseInt(animalTmp[2]) );
-				addToArray( chTemp );
-				break;
-			case "Goat":
-				Goat gTemp = new Goat( animalTmp[1], Integer.parseInt(animalTmp[2]) );
-				addToArray( gTemp );
-				break;
-			case "Goose":
-				Goose hTemp = new Goose( animalTmp[1], Integer.parseInt(animalTmp[2]) );
-				addToArray( hTemp );
-				break;
-			default :
-				printt("ANIMALLIST", "The type that was found was not a valid type.... not adding to animal array");
-				break;
-			}
+			animalSwitch( animalTmp[0], animalTmp[1], Integer.parseInt(animalTmp[2]) );
 
 		} // at this point everything should have been made and stuff - added to the array
 		
@@ -84,6 +60,29 @@ public class AnimalList extends ProcessorTemplate{
 		printArray();
 		
 		//end life.. jk
+	}
+	
+	public void animalSwitch(String type, String name, int age ) {
+		switch ( type ) {
+		case "Dog":
+			addToArray( new Dog( name, age ) );
+			break;
+		case "Cat":
+			addToArray( new Cat( name, age ) );
+			break;
+		case "Chicken":
+			addToArray( new Chicken( name, age ) );
+			break;
+		case "Goat":
+			addToArray( new Goat( name, age ) );
+			break;
+		case "Goose":
+			addToArray( new Goose( name, age ) );
+			break;
+		default :
+			printt("The type that was found was not a valid type, Please check spelling or as an admin");
+			break;
+		}
 	}
 	
 	/**

@@ -62,44 +62,14 @@ public class Interface extends Initialiser {
 				} else if ( userInput.equals("create") ) {
 					//make a new animal
 					//get type of animal to create
-					String type = CP.getInputPartOf("Please Input The Type Of Pet To Create",
-							AL.animalTypesLC);
-					switch ( type ) {
-					case "cat":
-						AL.addToArray( new Cat(CP.capitalise( CP.getInputLC("Please Input Name") ), 
-								CP.getInputIntRng("Input Pets age",
-										0, Integer.MAX_VALUE) ) 
-								);
-						break;
-					case "chicken":
-						AL.addToArray( new Chicken(CP.capitalise( CP.getInputLC("Please Input Name") ), 
-								CP.getInputIntRng("Input Pets age", 
-										0, Integer.MAX_VALUE) )
-								);
-						break;
-					case "dog":
-						AL.addToArray( new Dog(CP.capitalise( CP.getInputLC("Please Input Name") ), 
-								CP.getInputIntRng("Input Pets age", 
-										0, Integer.MAX_VALUE) )
-								);
-						break;
-					case "goat":
-						AL.addToArray( new Goat(CP.capitalise( CP.getInputLC("Please Input Name") ), 
-								CP.getInputIntRng("Input Pets age", 
-										0, Integer.MAX_VALUE) )
-								);
-						break;
-					case "goose":
-						AL.addToArray( new Goose(CP.capitalise( CP.getInputLC("Please Input Name") ), 
-								CP.getInputIntRng("In age", 
-										0, Integer.MAX_VALUE) )
-								);
-						break;
-					default:
-						printt( "New Type hasnt been added to Interface.java - Contact An Admin" );
-						break;
-					}
-					
+					//had to add the capitalise as when the animal is made the subclass sets the type to for
+					//	example Dog - which has a capital letter at the start
+					String type = CP.capitalise( CP.getInputPartOf("Please Input The Type Of Pet To Create",
+							AL.animalTypesLC) );
+					//I transferred the animal switch that was used here and in the constructor in AnimalList
+					// to animal list in its own method - this should still work as intended... testing now.
+					AL.animalSwitch( type, CP.capitalise( CP.getInputLC("Please Input A Name") ),
+							CP.getInputIntRng("Input Pets age", 0, Integer.MAX_VALUE) );					
 					
 				} else if ( userInput.equals("existing") ) {
 					// load an existing animal
