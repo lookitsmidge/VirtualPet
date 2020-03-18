@@ -36,7 +36,7 @@ public class FileUtils extends ProcessorTemplate {
 			
 			
 		} catch ( IOException exc ) {
-			//error occurred - log error
+			//error occurred - log error?
 		}
 		// - autonomous file opening
 	}
@@ -53,7 +53,7 @@ public class FileUtils extends ProcessorTemplate {
 		StringBuilder contents = new StringBuilder();
 		try {
 			in = new BufferedReader( new FileReader(this.filePath) );
-			//Oh my! a nested Try - im not funny, i know :(
+			//Oh my! a nested Try
 			try {
 				String currentLine = "";
 				while ( (currentLine = in.readLine()) != null ) {
@@ -65,10 +65,10 @@ public class FileUtils extends ProcessorTemplate {
 				in.close();
 			}
 		} catch ( FileNotFoundException e ) {
-			//the file wasnt found, well done genius - maybe you should make the file then.....
+			//the file wasnt found, maybe you should make the file then.....
 			//initialise the array with blank data - nothing
 		} catch ( IOException e ) {
-			//just in case anything else in my life breaks
+			//just in case anything breaks
 		}
 		return contents.toString();
 	}
