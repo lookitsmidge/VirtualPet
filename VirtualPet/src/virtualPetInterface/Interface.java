@@ -87,6 +87,7 @@ public class Interface extends Initialiser {
 				}
 			} else {
 				// inputs not a command
+				CP.notCommand(AL);
 			}
 			break;
 		default:

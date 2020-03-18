@@ -47,6 +47,7 @@ public class FileUtils extends ProcessorTemplate {
 	 * @return contents from file
 	 */
 	public String readFromFile() {
+		printt( "Starting Read From: " + this.filePath );
 		in = null;//sets it to be nothing
 		// use stringbuilder to make it more efficient
 		
@@ -65,9 +66,11 @@ public class FileUtils extends ProcessorTemplate {
 				in.close();
 			}
 		} catch ( FileNotFoundException e ) {
-			//the file wasnt found, maybe you should make the file then.....
+			printt( "File Was Not Found" );
+			//the file wasn't found, maybe you should make the file then.....
 			//initialise the array with blank data - nothing
 		} catch ( IOException e ) {
+			printt( "An Error Occurred During Read: " + e );
 			//just in case anything breaks
 		}
 		return contents.toString();
@@ -129,7 +132,7 @@ public class FileUtils extends ProcessorTemplate {
 			writer.write(this.spacer);
 			printt("\tWritten");
 		} else {
-			// Doesnt Work
+			// Doesn't Work
 			finishWrite();// test this
 		}
 	}
@@ -147,5 +150,17 @@ public class FileUtils extends ProcessorTemplate {
 		} else {
 			//file not opened
 		}
+	}
+	
+	/**
+	 * This method is to write an item to a file but only write one file
+	 * @param item
+	 * @throws IOException
+	 */
+	public void otWrite (String item) throws IOException {
+		printt( "Logged Amount" );
+		FileWriter otWriter = new FileWriter(this.filePath);
+		otWriter.write( item );
+		otWriter.close();
 	}
 }

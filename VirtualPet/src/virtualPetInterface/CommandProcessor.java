@@ -3,6 +3,8 @@ package virtualPetInterface;
 import java.util.Scanner;
 
 import utilities.ProcessorTemplate;
+import java.util.Random;
+import animals.*;
 /**
  * This class is aimed to be the way of processing the commands from the user
  * @author James Martland 24233781
@@ -10,6 +12,7 @@ import utilities.ProcessorTemplate;
  */
 public class CommandProcessor extends ProcessorTemplate {
 	Scanner in = new Scanner(System.in);
+	Random r = new Random();
 	public CommandProcessor() {
 		setTag("COMMPROCESSOR");
 	}
@@ -81,6 +84,7 @@ public class CommandProcessor extends ProcessorTemplate {
 		
 		return input;
 	}
+	
 	/**
 	 * This method is aimed to get an input from the user that has to be an integer
 	 * @param text
@@ -157,4 +161,16 @@ public class CommandProcessor extends ProcessorTemplate {
 	public String capitalise(String input) {
 		return ( input.substring(0, 1).toUpperCase() + input.substring(1) );
 	}
+	
+	public void notCommand(AnimalList AL) {
+		int chance = r.nextInt(6);
+		if ( chance < 2 ) { // pet is going to speak
+			for ( int i=0; i<r.nextInt(4); i++ ) {
+				AL.speak();
+			}
+		} else {
+			
+		}
+	}
+	
 }

@@ -62,6 +62,12 @@ public class AnimalList extends ProcessorTemplate{
 		//end life.. jk
 	}
 	
+	/**
+	 * This method is to replace the switch that was in two locations, It is more efficient than an if statement
+	 * @param type - type of animal it is
+	 * @param name - name of the animal - string
+	 * @param age - age of the animal - must be integer
+	 */
 	public void animalSwitch(String type, String name, int age ) {
 		switch ( type ) {
 		case "Dog":
@@ -184,7 +190,6 @@ public class AnimalList extends ProcessorTemplate{
 		animalArray[activeIndex].wake();
 	}
 	
-	//JOE - UNCOMMENT THIS WHEN MAKING METHODS
 	/**
 	 * This method is to make the animal do something special
 	 */
