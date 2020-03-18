@@ -50,31 +50,34 @@ public class AnimalList extends ProcessorTemplate{
 		for ( int i = 0; i < arrAnimalsFromFile.length; i++ ) {
 			//this loop will iterate, add animals from formatting and end life itself - if it is given a chance
 			String[] animalTmp = arrAnimalsFromFile[i].split(",");
-			if( animalTmp[0].equals("Dog") ) {
-				//make a doggo
+			
+			//I changed this to be a switch - this is much more efficient than the if statement that was here before
+			switch ( animalTmp[0] ) {
+			case "Dog":
 				Dog dTemp = new Dog( animalTmp[1], Integer.parseInt(animalTmp[2]) );//make this more robust btw you idiot
 				addToArray( dTemp );
-			} else if ( animalTmp[0].equals("Cat") ) {
-				//make a cat
+				break;
+			case "Cat":
 				Cat cTemp = new Cat( animalTmp[1], Integer.parseInt(animalTmp[2]) );
 				addToArray( cTemp );
-			} else if ( animalTmp[0].equals("Chicken") ) {
-				// make a chicken - james you are a chicken
+				break;
+			case "Chicken":
 				Chicken chTemp = new Chicken( animalTmp[1], Integer.parseInt(animalTmp[2]) );
 				addToArray( chTemp );
-			} else if ( animalTmp[0].equals("Goat") ) {
-				// make a goat
+				break;
+			case "Goat":
 				Goat gTemp = new Goat( animalTmp[1], Integer.parseInt(animalTmp[2]) );
 				addToArray( gTemp );
-			} else if ( animalTmp[0].equals("goose") ) {
-				// make a goose
+				break;
+			case "Goose":
 				Goose hTemp = new Goose( animalTmp[1], Integer.parseInt(animalTmp[2]) );
 				addToArray( hTemp );
-			} else {
-				//the type isnt available
-				//just do nothing and notify user
+				break;
+			default :
 				printt("ANIMALLIST", "The type that was found was not a valid type.... not adding to animal array");
+				break;
 			}
+
 		} // at this point everything should have been made and stuff - added to the array
 		
 		//all animals should have been added to the array - bc of the for loop
