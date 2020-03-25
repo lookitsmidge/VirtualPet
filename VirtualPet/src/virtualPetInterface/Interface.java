@@ -9,13 +9,30 @@ package virtualPetInterface;
  *
  */
 import animals.*;
-public class Interface extends Initialiser {
+import javax.swing.*;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
+import java.awt.event.*;
+public class Interface extends Initialiser{
 	
 	AnimalList AL = new AnimalList("AnimalDetails.csv"); // this is animalList, this is where all of the animal array is stored among other things
 	// move both of these to Initialiser
+	private boolean run;
+	WindowListener exitListener = new WindowAdapter() {
+		@Override
+		public void windowClosing(WindowEvent e) {
+			run = false;
+		}
+	};
 	
+	public Interface() {
+		printt( "Starting interface" );
+		initInitialiser();
+		printt( "Init complete" );
+	}
 	public static void main(String[] args) {
 		printstatic("MAIN", "Running Startup");
+				
 		Interface I = new Interface();
 		I.startSystem();
 	}
@@ -25,11 +42,19 @@ public class Interface extends Initialiser {
 	public void startSystem() {
 		setTag("MAIN");
 		printt("Startup Complete");
-		boolean run = false;// this will determine whether to take another response from the user or not, whether the loop that you will see in a min should end or not
+		run = false;// this will determine whether to take another response from the user or not, whether the loop that you will see in a min should end or not
 		//testing how I am going to store all of the objects for the pets
-//		AL.addToArray( new Dog("Max",  10) );
-//		AL.addToArray( new Goose("Squeak", 2) );
-//		AL.addToArray( new Cat("Ginger", 3) );
+		
+		//Building the JFrame
+		frame = new JFrame( "New Frame" );
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.setSize(300, 300);
+		
+		
+		frame.add(startPanel);
+		
+		frame.setVisible(true);
+		
 		AL.setActiveIndex(-1); // maybe move this to AnimalList??
 		do{
 			run = consent();
@@ -37,6 +62,7 @@ public class Interface extends Initialiser {
 		printt("Shutting Down ... ");
 		AL.writeArrayToFile();
 		printt( "Shutdown Complete" );
+		System.exit(0);
 	}
 	
 	//this method need comments vetted DRASTICALLY

@@ -1,9 +1,10 @@
 package utilities;
 
 public abstract class ProcessorTemplate {
-	private String tag;
+	private String tag = "NoTag";
 	
 	public void setTag(String tag) {
+		printt("PRSSORTEMP", "Setting Tag To: " + tag );
 		this.tag = tag;
 	}
 	/**
