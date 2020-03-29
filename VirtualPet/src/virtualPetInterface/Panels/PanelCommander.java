@@ -17,6 +17,7 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 		@Override
 		public void windowClosing(WindowEvent e) {
 			printt("Exit Event found");
+			turnOff(); // this method is in initialiser
 		}
 	};
 	
@@ -32,6 +33,10 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 	 */
 	public PanelCommander() {
 	}
+	
+	/**
+	 * This method is for creating the threads to set up the panels
+	 */
 	public void startPanelCommander() {
 		setTag("PNLCOMM");
 		//Thread Init
@@ -57,6 +62,10 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 		
 		
 	}
+	
+	/**
+	 * This method is to set up the frame
+	 */
 	public void initFrame() {
 		printt( "initialising the frame" );
 //		this.frame = new JFrame("VirtualPetFrame");
@@ -64,24 +73,11 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 		this.frame.setSize(300, 300);
 		this.frame.addWindowListener(exitListener);//this adds the exit Listener
 		initTabs();
+		frame.setLayout(null);
 		this.frame.add(tabs);
 		this.frame.setVisible(true);
-		//this.frame.setLayout( new GridLayout(1, 1) );
-		
-		
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			
-		}
-		toNewPetPanel();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			
-		}
-		toStartPanel();
 	}
+	
 	public void initTabs() {
 		tabs = new JTabbedPane();
 		tabs.setSize(300, 350);

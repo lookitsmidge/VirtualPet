@@ -5,16 +5,16 @@ package virtualPetInterface;
  *
  */
 
+import animals.AnimalList;
 import utilities.*;
 import virtualPetInterface.Panels.*;
 public abstract class Initialiser extends ProcessorTemplate {
-	String userInput; // this is to reduce cost of taking input
-	//create string array see child class
-	String[] arrCloseResponses = { "end", "shutdown", "finish", "stop", "close", "exit", "leave", "end it all" };
-	CommandProcessor CP = new CommandProcessor();// this is the class that should do all the checking for the commands for the 
 	private int runTime;
 	private FileUtils runAccumulator = new FileUtils("logNo.txt");
 	
+	protected AnimalList AL = new AnimalList("AnimalDetails.csv"); // this is animalList, this is where all of the animal array is stored among other things
+	protected boolean run;
+	CommandProcessor CP = new CommandProcessor();// this is the class that should do all the checking for the commands for the 
 	PanelCommander PC;
 	
 	/**
@@ -41,5 +41,12 @@ public abstract class Initialiser extends ProcessorTemplate {
 		} catch ( Exception exc) {
 			exc.printStackTrace();
 		}
+	}
+	public void turnOff() {
+		run = false;
+		printt("Shutting Down ... ");
+		AL.writeArrayToFile();
+		printt( "Shutdown Complete" );
+		System.exit(0);
 	}
 }

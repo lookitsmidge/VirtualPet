@@ -7,6 +7,7 @@ public abstract class ProcessorTemplate {
 		printt("PRSSORTEMP", "Setting Tag To: " + tag );
 		this.tag = tag;
 	}
+	
 	/**
 	 * This method is to make printing msgs to the command line more bearable with a tag
 	 * @param text
@@ -14,6 +15,7 @@ public abstract class ProcessorTemplate {
 	public void printt(String tag, String text) {
 		System.out.println( "[" + tag + "] " + text );
 	}
+	
 	/**
 	 * This method is to make printing msgs to the command line more bearable with a tag
 	 * @param text
@@ -45,6 +47,7 @@ public abstract class ProcessorTemplate {
 	public void errPrint(String errMsg) {
 		System.out.println( "[ERR] [" + this.tag + "] " + errMsg );
 	}
+	
 	/**
 	 * This method is to print to the command line in a static context
 	 * @param text

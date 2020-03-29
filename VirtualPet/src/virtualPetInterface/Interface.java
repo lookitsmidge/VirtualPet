@@ -11,9 +11,8 @@ package virtualPetInterface;
 import animals.*;
 public class Interface extends Initialiser{
 	
-	AnimalList AL = new AnimalList("AnimalDetails.csv"); // this is animalList, this is where all of the animal array is stored among other things
-	// move both of these to Initialiser
-	private boolean run;
+	String[] arrCloseResponses = { "end", "shutdown", "finish", "stop", "close", "exit", "leave", "end it all" };
+	String userInput; // this is to reduce cost of taking input
 	
 	public Interface() {
 		printt( "Starting interface" );
@@ -137,11 +136,5 @@ public class Interface extends Initialiser{
 		
 		return runNext;
 	}
-	public void turnOff() {
-		run = false;
-		printt("Shutting Down ... ");
-		AL.writeArrayToFile();
-		printt( "Shutdown Complete" );
-		System.exit(0);
-	}
+
 }

@@ -228,4 +228,17 @@ public class AnimalList extends ProcessorTemplate{
 	public final String getActivesName() {
 		return animalArray[activeIndex].getName();
 	}
+	
+	public int findNme(String name) {
+		int index = -1;
+		for ( int i = 0; i < this.nextLocation; i++ ) {
+			if ( animalArray[i].getName().toLowerCase().equals( name.toLowerCase() ) ) {
+				index = i;
+				break;
+			} else {
+				//nextVal
+			}
+		}
+		return index;
+	}
 }
