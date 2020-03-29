@@ -5,10 +5,7 @@ package virtualPetInterface;
  *
  */
 
-import java.util.Scanner;
 import utilities.*;
-import java.io.IOException;
-import javax.swing.*;
 import virtualPetInterface.Panels.*;
 public abstract class Initialiser extends ProcessorTemplate {
 	String userInput; // this is to reduce cost of taking input
@@ -18,13 +15,8 @@ public abstract class Initialiser extends ProcessorTemplate {
 	private int runTime;
 	private FileUtils runAccumulator = new FileUtils("logNo.txt");
 	
+	PanelCommander PC;
 	
-	JFrame frame;
-	//Panels
-	static JPanel startPanel;
-	
-	
-	//End of panels
 	/**
 	 * This is the constructor for this abstract class, this should aim to initialise anything that is needed in the subclass interface
 	 */
@@ -32,29 +24,8 @@ public abstract class Initialiser extends ProcessorTemplate {
 		printt( "Running Initialiser" );
 		setTag( "INIT" );
 		logAttemptStart();
-		
-		//make threads
-		
-		
-		// figure out the threads later
-		
-		// setting up the Objects and the threads
-		StartPanel SP = new StartPanel();
-		Thread buildStartPanel = new Thread( SP );
-		
-		
-		//Run the Threads
-		buildStartPanel.start();
-		
-		//Join with all
-		try {
-			buildStartPanel.join();
-			startPanel = SP.returnPanel();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			errPrint("An Error Occurrec while Making GUI");
-			e.printStackTrace();
-		}
+		PC = new PanelCommander();
+		PC.startPanelCommander();
 		
 	}
 	

@@ -1,24 +1,18 @@
 package virtualPetInterface.Panels;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
-import utilities.BuildUtilitiesVPV1;
-public class StartPanel extends BuildUtilitiesVPV1  implements ActionListener, Runnable{
-	JButton btnExisting = new JButton();
-	JButton btnNew = new JButton();
-	JPanel startPanel;
-	boolean panelBuilt = false;
+public class StartPanel extends PanelCommander  implements ActionListener, Runnable{
+	
+	private JButton btnExisting = new JButton();
+	private JButton btnNew = new JButton();
+	JPanel startPanel = new JPanel( null );
 	
 	@Override
 	public void run() {
 		initStartPanel();
-		// use (threadName).join; in other class
+		// use (threadName).join; in other class		
 	}
-	//make this a thread
 	
-	public StartPanel() {
-		super();
-	}
 	public void initStartPanel() {
 		setTag( "STARTPANEL" );
 		startPanel = new JPanel( null );
@@ -33,8 +27,8 @@ public class StartPanel extends BuildUtilitiesVPV1  implements ActionListener, R
 				150, 40, "New", 100, 50,
 				"This Button is to create a new pet");
 		//build button and add it
-		panelBuilt = true;
 		//build other button and add it
+		printt( "Finished panel Creation" );
 	}
 	/**
 	 * This is how I am going to return the panel that is being built
@@ -50,6 +44,7 @@ public class StartPanel extends BuildUtilitiesVPV1  implements ActionListener, R
 		}
 		if( e.getSource() == btnNew ) {
 			printt( "btnNew Pressed" );
+			toNewPetPanel();
 		}
 	}
 }

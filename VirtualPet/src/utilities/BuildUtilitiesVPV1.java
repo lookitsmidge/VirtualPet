@@ -1,7 +1,6 @@
 package utilities;
 import javax.swing.*;
 import java.awt.event.*;
-import java.awt.*;
 /**
  * This Class should be left alone -
  * this class is to build and add the elements to a panel
@@ -34,5 +33,25 @@ public class BuildUtilitiesVPV1 extends ProcessorTemplate {
         printt("\tButton has been created");
         toAddTo.add(button);
     }
-	
+	public void addLabel(JLabel label, JPanel panel, 
+			int x, int y, String text, int sizeX, int sizeY) {
+        label.setLocation(x, y);
+        label.setSize(sizeX, sizeY);
+        label.setOpaque(true);
+        label.setText(text);
+        panel.add(label);
+    }
+	public void addTextField(JTextField txtfield, JPanel panel, 
+			int x, int y, int sizeX, int sizeY) {
+        txtfield.setLocation(x, y);
+        txtfield.setSize(sizeX, sizeY);
+        panel.add(txtfield);
+    }
+	public void addComboBox(JComboBox combo, JPanel panel, int x, int y, int sizeX, int sizeY) {
+        combo.setLocation(x, y);
+        combo.setSize(sizeX, sizeY);
+        combo.setEditable(false);
+        combo.setOpaque(true);
+        panel.add(combo);
+    }
 }
