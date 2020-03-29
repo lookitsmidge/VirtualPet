@@ -3,23 +3,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import utilities.BuildUtilitiesVPV1;
-public class StartPanel extends BuildUtilitiesVPV1  implements ActionListener{
+public class StartPanel extends BuildUtilitiesVPV1  implements ActionListener, Runnable{
 	JButton btnExisting = new JButton();
 	JButton btnNew = new JButton();
 	JPanel startPanel;
 	boolean panelBuilt = false;
-	/*
+	
 	@Override
 	public void run() {
 		initStartPanel();
 		// use (threadName).join; in other class
 	}
-	*/
 	//make this a thread
+	
 	public StartPanel() {
-		super(); // this is to set up BuildUtilites
+		super();
+	}
+	public void initStartPanel() {
 		setTag( "STARTPANEL" );
-		startPanel = new JPanel( new GridLayout(1, 1) );
+		startPanel = new JPanel( null );
 		
 		// this is where all of the code that builds the panel will be 
 		printt( "building btnExisting" );
@@ -45,6 +47,9 @@ public class StartPanel extends BuildUtilitiesVPV1  implements ActionListener{
 	public void actionPerformed( ActionEvent e ) {
 		if( e.getSource() == btnExisting ) {
 			printt( "btnExisting Pressed" );
+		}
+		if( e.getSource() == btnNew ) {
+			printt( "btnNew Pressed" );
 		}
 	}
 }

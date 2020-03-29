@@ -21,7 +21,8 @@ public class Interface extends Initialiser{
 	WindowListener exitListener = new WindowAdapter() {
 		@Override
 		public void windowClosing(WindowEvent e) {
-			run = false;
+			printt("Exit Event found");
+			turnOff();
 		}
 	};
 	
@@ -50,7 +51,7 @@ public class Interface extends Initialiser{
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.setSize(300, 300);
 		
-		
+		frame.addWindowListener(exitListener);//this adds the exit Listener
 		frame.add(startPanel);
 		
 		frame.setVisible(true);
@@ -59,10 +60,7 @@ public class Interface extends Initialiser{
 		do{
 			run = consent();
 		} while ( run );
-		printt("Shutting Down ... ");
-		AL.writeArrayToFile();
-		printt( "Shutdown Complete" );
-		System.exit(0);
+		turnOff();
 	}
 	
 	//this method need comments vetted DRASTICALLY
@@ -159,5 +157,12 @@ public class Interface extends Initialiser{
 		}
 		
 		return runNext;
+	}
+	public void turnOff() {
+		run = false;
+		printt("Shutting Down ... ");
+		AL.writeArrayToFile();
+		printt( "Shutdown Complete" );
+		System.exit(0);
 	}
 }

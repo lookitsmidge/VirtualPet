@@ -38,19 +38,23 @@ public abstract class Initialiser extends ProcessorTemplate {
 		
 		// figure out the threads later
 		
+		// setting up the Objects and the threads
+		StartPanel SP = new StartPanel();
+		Thread buildStartPanel = new Thread( SP );
 		
-		//Runnable buildStartPanel = new Runnable() {
-		//	public void run() {
-				StartPanel sp = new StartPanel();
-				startPanel = sp.returnPanel();
-		//	}
-		//};
-		// other runnable building Panels
 		
 		//Run the Threads
-		//new Thread(buildStartPanel).start();
+		buildStartPanel.start();
 		
-		//build Panels
+		//Join with all
+		try {
+			buildStartPanel.join();
+			startPanel = SP.returnPanel();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			errPrint("An Error Occurrec while Making GUI");
+			e.printStackTrace();
+		}
 		
 	}
 	
