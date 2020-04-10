@@ -6,7 +6,7 @@ import utilities.BuildUtilitiesVPV1;
 /**
  * This Class is aimed to be the way that all the panels are switched - Might be removed tho
  * dont know if i am going to use this yet - depends on efficiency
- * @author 90jma
+ * @author James Martland 24233781
  *
  */
 public class PanelCommander extends BuildUtilitiesVPV1 {
