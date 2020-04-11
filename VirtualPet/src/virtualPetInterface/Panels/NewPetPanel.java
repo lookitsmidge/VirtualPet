@@ -1,7 +1,12 @@
 package virtualPetInterface.Panels;
 import javax.swing.*;
-
 import java.awt.event.*;
+
+/**
+ * 
+ * @author James Martland 24233781
+ *
+ */
 public class NewPetPanel extends PanelCommander implements ActionListener, Runnable{
 	
 	JPanel newPetPanel = new JPanel( null );
@@ -18,11 +23,19 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 	String[] comboType_data = {"Please Choose", "Cat", "Chicken", "Dog", "Goat", "Goose"};
 	JComboBox comboType = new JComboBox(comboType_data);
 	
+	
+	/**
+	 * This is the overridden method for running the thread
+	 */
 	@Override
 	public void run() {
 		printt("Thread - Building New Pet Panel" );
 		initNewPetPanel();
 	}
+	
+	/**
+	 * This is the method that is to build the panel
+	 */
 	public void initNewPetPanel() {
 		setTag( "NPPanel" );
 		
@@ -46,9 +59,18 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 		
 		printt( "Finished Panel Creation" );
 	}
+	
+	/**
+	 * This returns the panel that is created in the thread
+	 * @return
+	 */
 	public JPanel returnPanel() {
 		return this.newPetPanel;
 	}
+	
+	/**
+	 * This is the required method that is used for all of the buttons
+	 */
 	public void actionPerformed( ActionEvent e ) {
 		if( e.getSource() == btnCancel) {
 			// switch panel back and erase all data in text fields

@@ -78,6 +78,9 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 		this.frame.setVisible(true);
 	}
 	
+	/**
+	 * This initialises the tabs for the tabbed pane
+	 */
 	public void initTabs() {
 		tabs = new JTabbedPane();
 		tabs.setSize(300, 350);
@@ -90,11 +93,19 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 		tabs.setEnabledAt(1, false);
 		tabs.setSelectedIndex(0);
 	}
+	
+	/**
+	 * This makes the user see the New pet Panel
+	 */
 	public void toNewPetPanel() {
 		printt( "running changing panel method" );
 		//switch Active Index
 		tabs.setSelectedIndex(1);
 	}
+	
+	/**
+	 * This makes the user see the start panel
+	 */
 	public void toStartPanel() {
 		tabs.setSelectedIndex(0);
 	}
