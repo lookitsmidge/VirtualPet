@@ -84,33 +84,35 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 			} else {
 				//next is lookup check
 				String name = txtName.getText().trim();
-				if ( V.illegalCharCheck(name) ) {
+				if ( V.illegalCharCheck(name) ) { // checks the input for Illegal Characters
 					String age = txtAge.getText().trim();
 					String type = (String) comboType.getSelectedItem();
 					if ( AL.findNme(name) == -1 ) {
-						//name doesnt already exist
+						//name doesn't already exist
 						if ( V.isInt( age ) ) {
 							// push all answers through
 							AL.animalSwitch( type, name, Integer.parseInt(age) );
+							//clear all fields
 							txtName.setText("");
 							txtAge.setText("");
 							comboType.setSelectedIndex(0);
+							AL.printArray();
 						} else {
 							printt( "age must be an integer" );
 							optPane( "Age Must Be An Integer" );
 						}
 					} else {
-						//if it is found
-						printt("found name - you cant input a name that exists");
+						//if name is found in array
+						printt("Found name - you cant input a name that exists");
 						optPane( "You Can't Use A Name That Already Exists" );
 					}
 				} else {
 					printt( "You have used an illegal character" );
 					optPane( "You Must Not Use Illegal Characters" );
 				}
-			}			
+			}// this should be the end of the AE			
 			
-			// check name doesnt exist - lookup check
+			// check name doesn't exist - lookup check
 			
 			//check for illegal characters
 			

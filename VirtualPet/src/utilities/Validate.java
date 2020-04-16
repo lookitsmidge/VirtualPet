@@ -9,9 +9,18 @@ public class Validate extends ProcessorTemplate {
 			"_", "+", "=", "|", "¬", "[", "]", "{", "}", 
 			"<", ">", ":", ";", "@", "'", "~", "#"};
 	
+	/**
+	 * This is the constructor that sets up the tag for this class
+	 */
 	public Validate() {
 		setTag("VALIDATE");
 	}
+	
+	/**
+	 * This is the method that will check users inputs for illegal characters being input
+	 * @param parameter
+	 * @return true (if there is no illegal characters )
+	 */
 	public boolean illegalCharCheck(String parameter) {
 		boolean tmpBool = true;
 		for( int i = 0; i < illegalChars.length; i++) {
@@ -23,6 +32,12 @@ public class Validate extends ProcessorTemplate {
 		}
 		return tmpBool;
 	}
+	
+	/**
+	 * This is the method that will check if a string value is an integer
+	 * @param parameter
+	 * @return true ( if value is an integer )
+	 */
 	public boolean isInt(String parameter) {
         boolean tmpBool;
         try {
@@ -36,6 +51,11 @@ public class Validate extends ProcessorTemplate {
         return tmpBool;
     }
     
+	/**
+	 * This method checks if the contents of a textfield is an integer
+	 * @param txtTemp
+	 * @return true ( if the text field input is an integer )
+	 */
     public boolean isInt(JTextField txtTemp) {
         boolean tmpBool;
         try {
@@ -49,6 +69,11 @@ public class Validate extends ProcessorTemplate {
         return tmpBool;
     }
 	
+    /**
+     * This method checks if a textfield is empty or not
+     * @param txtTemp
+     * @return true ( if the text field has a value in it )
+     */
 	public boolean presenceCheck(JTextField txtTemp){
         // will return true if there is something in there
         // this is due to the not operator '!'

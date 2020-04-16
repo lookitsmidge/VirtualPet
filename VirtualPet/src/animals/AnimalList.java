@@ -18,7 +18,7 @@ public class AnimalList extends ProcessorTemplate{
 	 *  	when importing array - find out how many and then add extra 5 spaces to array count to make sure that the user can do what the fudge they want
 	 *  		(adding more pets wise)
 	 */
-	FileUtils FU;
+	static FileUtils FU;
 	private Animal[] animalArray;
 	private int nextLocation;
 	private int activeIndex; // this is the users current pet to interact with
@@ -69,6 +69,7 @@ public class AnimalList extends ProcessorTemplate{
 	 * @param age - age of the animal - must be integer
 	 */
 	public void animalSwitch(String type, String name, int age ) {
+		print("Running AnimalSwitch");
 		switch ( type ) {
 		case "Dog":
 			addToArray( new Dog( name, age ) );
@@ -100,8 +101,8 @@ public class AnimalList extends ProcessorTemplate{
 			//the shit show continues
 			//add this shit to the array
 			
-			animalArray[nextLocation] = animal;
-			nextLocation++;
+			this.animalArray[nextLocation] = animal;
+			this.nextLocation++;
 			printt("ANIMALLIST", "Animal Added To Array");
 		} else {
 			//cant add - there isnt space - so fuck you
@@ -146,7 +147,7 @@ public class AnimalList extends ProcessorTemplate{
 	public void writeArrayToFile() {
 		try {
 			FU.initWrite();
-			for ( int i=0; i < nextLocation; i++ ) {
+			for ( int i=0; i < this.nextLocation; i++ ) {
 				FU.write( animalArray[i].toString() );
 			}
 			FU.finishWrite();

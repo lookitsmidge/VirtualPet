@@ -17,7 +17,8 @@ public class FileUtils extends ProcessorTemplate {
 	
 	//method to read from a file (CSV) - same CSV
 	public FileUtils(String filePath) {
-		setTag( "FILEUTILS" );
+		String nmeFilePath = filePath.substring(0, filePath.length()-4); // this should make it easier to track what is happening
+		setTag( "FILEUTILS_" + nmeFilePath );
 		printt( "Running Constructor" );
 		printt( "[CONF] Default Spacer Set to: NewLine" );
 		this.spacer = "\r";
@@ -157,10 +158,14 @@ public class FileUtils extends ProcessorTemplate {
 	 * @param item
 	 * @throws IOException
 	 */
-	public void otWrite (String item) throws IOException {
+	public void otWrite (String item){
 		printt( "Logged Amount" );
+		try {
 		FileWriter otWriter = new FileWriter(this.filePath);
 		otWriter.write( item );
 		otWriter.close();
+		} catch (IOException e) {
+			errPrint( "An Error Occurred when writing: " + e );
+		}
 	}
 }
