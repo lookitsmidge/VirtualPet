@@ -12,7 +12,8 @@ public abstract class Initialiser extends ProcessorTemplate {
 	private int runTime;
 	private FileUtils runAccumulator = new FileUtils("logNo.txt");
 	
-	protected AnimalList AL = new AnimalList("AnimalDetails.csv"); // this is animalList, this is where all of the animal array is stored among other things
+	//AL has to be static so that the multiple threads accessing it have all the same attributes
+	protected static AnimalList AL = new AnimalList("AnimalDetails.csv"); // this is animalList, this is where all of the animal array is stored among other things
 	protected boolean run;
 	CommandProcessor CP = new CommandProcessor();// this is the class that should do all the checking for the commands for the 
 	PanelCommander PC;
@@ -46,6 +47,7 @@ public abstract class Initialiser extends ProcessorTemplate {
 		run = false;
 		printt("Shutting Down ... ");
 		AL.writeArrayToFile();
+		runAccumulator.otWrite( this.runTime + "" );
 		printt( "Shutdown Complete" );
 		System.exit(0);
 	}
