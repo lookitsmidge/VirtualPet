@@ -10,7 +10,7 @@ import java.io.IOException;
 public class AnimalList extends ProcessorTemplate{
 
 	/**
-	 *  this shitty class should have:
+	 *  this class should have:
 	 *  	animal array (partially tested by yours truly)
 	 *  	method to populate said array
 	 *  	method to delete item from array,
@@ -230,6 +230,11 @@ public class AnimalList extends ProcessorTemplate{
 		return animalArray[activeIndex].getName();
 	}
 	
+	/**
+	 * This method is to see if the name input is listed in the array
+	 * @param name
+	 * @return index ( of the name that is found or -1 )
+	 */
 	public int findNme(String name) {
 		int index = -1;
 		for ( int i = 0; i < this.nextLocation; i++ ) {
@@ -241,5 +246,14 @@ public class AnimalList extends ProcessorTemplate{
 			}
 		}
 		return index;
+	}
+	
+	/**
+	 * This method retrieved the animal at the location that is the parameter
+	 * @param i
+	 * @return animal at location i
+	 */
+	public Animal getAnimalLoc( int i ) {
+		return animalArray[i];
 	}
 }

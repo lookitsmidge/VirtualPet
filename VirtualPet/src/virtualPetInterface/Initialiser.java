@@ -12,9 +12,9 @@ public abstract class Initialiser extends ProcessorTemplate {
 	private int runTime;
 	private FileUtils runAccumulator = new FileUtils("logNo.txt");
 	
-	//AL has to be static so that the multiple threads accessing it have all the same attributes
+	//AL has to be static so that the multiple threads accessing it have the same AL
 	protected static AnimalList AL = new AnimalList("AnimalDetails.csv"); // this is animalList, this is where all of the animal array is stored among other things
-	protected boolean run;
+	protected boolean run; // might not need this when gui is built
 	CommandProcessor CP = new CommandProcessor();// this is the class that should do all the checking for the commands for the 
 	PanelCommander PC;
 	
@@ -30,6 +30,9 @@ public abstract class Initialiser extends ProcessorTemplate {
 		
 	}
 	
+	/**
+	 * This is the method that starts logging the run number of the program
+	 */
 	public void logAttemptStart() {
 		
 		printt( "Trying Log" );
@@ -43,6 +46,13 @@ public abstract class Initialiser extends ProcessorTemplate {
 			exc.printStackTrace();
 		}
 	}
+	
+	/**
+	 * This is the method that is called to turn off the system, this has to be placed here,
+	 * because the way the user interacts with the system inherits from this class,
+	 * this method makes sure that the details are saved before the user terminates
+	 * ( doesn't protect from unexpected power failure )
+	 */
 	public void turnOff() {
 		run = false;
 		printt("Shutting Down ... ");

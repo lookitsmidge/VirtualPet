@@ -100,7 +100,7 @@ public class FileUtils extends ProcessorTemplate {
 	}
 	
 	/**
-	 * This method Initialises the filereader
+	 * This method Initialises the FileReader
 	 * @param toWrite
 	 * @throws IOException 
 	 */

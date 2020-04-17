@@ -40,7 +40,7 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 	 */
 	public void startPanelCommander() {
 		setTag("PNLCOMM");
-		//Thread Init
+		//Thread Initialisation
 		SP = new StartPanel();
 		Thread buildStartPanel = new Thread( SP );
 		NPP = new NewPetPanel();

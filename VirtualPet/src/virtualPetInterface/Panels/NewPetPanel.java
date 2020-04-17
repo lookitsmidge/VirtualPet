@@ -21,6 +21,9 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 	JTextField txtAge = new JTextField();
 	
 	String[] comboType_data = {"Please Choose", "Cat", "Chicken", "Dog", "Goat", "Goose"};
+	
+	//this is because Eclipse was annoying me about this ComboBox
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	JComboBox comboType = new JComboBox(comboType_data);
 	
 	
@@ -40,7 +43,7 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 		setTag( "NPPanel" );
 		
 		//adding all of the components
-		int offset = 30; // bc this panel messes up due to the tabbed pane ( ignore )
+		int offset = 30; // bc this panel messes up due to the Tabbed pane ( ignore )
 		printt( "Building lblName" );
 		addLabel(lblName, newPetPanel, 0, 0+ offset, "Name Of Pet:", 100, 50 );
 		printt( "Building txtName" );
@@ -96,7 +99,6 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 							txtName.setText("");
 							txtAge.setText("");
 							comboType.setSelectedIndex(0);
-							AL.printArray();
 						} else {
 							printt( "age must be an integer" );
 							optPane( "Age Must Be An Integer" );

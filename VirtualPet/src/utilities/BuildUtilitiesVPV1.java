@@ -96,7 +96,7 @@ public class BuildUtilitiesVPV1 extends Initialiser {
     }
 	
 	/**
-	 * This method adds a combobox to the panel
+	 * This method adds a ComboBox to the panel
 	 * @param combo
 	 * @param panel
 	 * @param x
@@ -104,6 +104,7 @@ public class BuildUtilitiesVPV1 extends Initialiser {
 	 * @param sizeX
 	 * @param sizeY
 	 */
+	@SuppressWarnings("rawtypes")
 	public void addComboBox(JComboBox combo, JPanel panel, int x, int y, int sizeX, int sizeY) {
         combo.setLocation(x, y);
         combo.setSize(sizeX, sizeY);
