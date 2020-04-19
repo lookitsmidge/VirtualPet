@@ -5,7 +5,7 @@ import java.awt.event.*;
 import utilities.BuildUtilitiesVPV1;
 
 /**
- * This Class is aimed to be the way that all the panels are switched - Might be removed tho
+ * This Class is aimed to be the way that all the panels are switched
  * don't know if i am going to use this yet - depends on efficiency
  * @author James Martland 24233781
  *
@@ -100,7 +100,6 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 	 */
 	public void toNewPetPanel() {
 		printt( "running changing panel method" );
-		//switch Active Index
 		tabs.setSelectedIndex(1);
 	}
 	
