@@ -112,4 +112,19 @@ public class BuildUtilitiesVPV1 extends Initialiser {
         combo.setOpaque(true);
         panel.add(combo);
     }
+	
+	/**
+	 * This method adds a Table to the panel
+	 * @param table
+	 * @param panel
+	 * @param x
+	 * @param y
+	 * @param sizeX
+	 * @param sizeY
+	 */
+	public void addTable( JScrollPane table, JPanel panel, int x, int y, int sizeX, int sizeY) {
+		table.setLocation(x, y);
+		table.setSize(sizeX, sizeY);
+		panel.add(table);
+	}
 }
