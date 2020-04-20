@@ -27,6 +27,8 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	JComboBox comboChoosePet = new JComboBox(comboPet_Data);
 	
+	JButton btnSelect = new JButton();
+	
 	@Override
 	public void run() {
 		printt( "Thread - Building Existing Pet Panel" );
@@ -34,7 +36,13 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 	
 	public void initExistingPetPanel() {
 		setTag( "ExistingPetPnl" );
-		
+		printt( "Building btnBack" );
+		addButton(this, existingPetPanel, btnBack, 0, 0, "Back", 200, 50, "This button will take you back to the home screen");
+		print( "Building petTableScroll" );
+		addTable(petTableScroll, existingPetPanel, 0, 60, 300, 100);
+		print( "" );
+		addComboBox(comboChoosePet, existingPetPanel, 10, 170, 130, 70);
+		addButton(this, existingPetPanel, btnSelect, 150, 170, "Select", 100, 50, "This Button is to select the animal currently in the combo box");
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -48,7 +56,11 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 	}
 	
 	public void actionPerformed( ActionEvent e ) {
-		
+		if( e.getSource() == btnBack ) {
+			//go back to home screen
+			//this should clear the comboBox too
+			toStartPanel();
+		}
 	}
 		
 }
