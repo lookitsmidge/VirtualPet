@@ -27,6 +27,8 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 	JPanel startPanel = new JPanel(null);
 	NewPetPanel NPP;
 	JPanel newPetPanel = new JPanel(null);
+	ExistingPetPanel EPP;
+	JPanel existingPetPanel = new JPanel(null);
 	
 	
 	/*
@@ -45,16 +47,21 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 		Thread buildStartPanel = new Thread( SP );
 		NPP = new NewPetPanel();
 		Thread buildNewPetPanel = new Thread( NPP );
+		EPP = new ExistingPetPanel();
+		Thread buildExistingPetPanel = new Thread ( EPP );
 		
 		//Thread Run
 		buildStartPanel.start();
 		buildNewPetPanel.start();
+		buildExistingPetPanel.start();
 		
 		try {
 			buildStartPanel.join();
 			buildNewPetPanel.join();
+			buildExistingPetPanel.join();
 			this.startPanel = SP.returnPanel();
 			this.newPetPanel = NPP.returnPanel();
+			this.existingPetPanel = EPP.returnPanel();
 			initFrame();
 		} catch ( InterruptedException e) {
 			errPrint("An Error Occurred while Making GUI");
@@ -92,6 +99,8 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 		printt("adding tab");
 		tabs.addTab( "newPet", newPetPanel );
 		tabs.setEnabledAt(1, false);
+		printt("adding tab");
+		tabs.addTab( "ExistingPet", existingPetPanel);
 		tabs.setSelectedIndex(0);
 	}
 	
@@ -101,6 +110,14 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 	public void toNewPetPanel() {
 		printt( "running changing panel method" );
 		tabs.setSelectedIndex(1);
+	}
+	
+	/**
+	 * This makes the user see the Existing pet Panel
+	 */
+	public void toExistingnPetPanel() {
+		printt( "running changing panel method" );
+		tabs.setSelectedIndex(2);
 	}
 	
 	/**

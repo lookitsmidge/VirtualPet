@@ -60,6 +60,7 @@ public class StartPanel extends PanelCommander  implements ActionListener, Runna
 	public void actionPerformed( ActionEvent e ) {
 		if( e.getSource() == btnExisting ) {
 			printt( "btnExisting Pressed" );
+			toExistingnPetPanel();
 		}
 		if( e.getSource() == btnNew ) {
 			printt( "btnNew Pressed" );
