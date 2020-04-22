@@ -72,15 +72,18 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 	public void initExistingPetPanel() {
 		setTag( "ExistingPetPnl" );
 		int offset = 30;
-		printt( "Building btnBack" );
 		addButton(this, existingPetPanel, btnBack, 0, 0 + offset, "Back", 100, 50, "This button will take you back to the home screen");
-		print( "Building petTableScroll" );
-		addTable(petTableScroll, existingPetPanel, 0, 60 + offset, 300, 100);
-		print( "" );
+		
+		addScrollPane(petTableScroll, existingPetPanel, 0, 60 + offset, 300, 100);
+		
 		addButton(this, existingPetPanel, btnSelect, 150, 170 + offset, "Select", 100, 50, "This Button is to select the animal currently in the combo box");
+		
 		updateGUI();
 	}
 	
+	/**
+	 * This method is to update the table and combo box - this uses threads
+	 */
 	public void updateGUI() {
 		
 		popTbl.start();
@@ -91,10 +94,14 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 		} catch( InterruptedException e ) {
 			errPrint( "An error Occurred when populating ExistingPetPanel" + e );
 		} finally {
-			printt( "Finished Populating" );
+			printt( "Finished Populating" );			
 		}
 	}
 	
+	/**
+	 * This method is to update the combo box - this should be called whenever a pet is added
+	 * Called From Thread
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void updateComboBox() {
 		// Reinitialises the variable
@@ -102,11 +109,16 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 		comboPet_Data = new String[AL.getNextLocation()];
 		for( int i = 0; i < AL.getNextLocation(); i++) {
 			comboPet_Data[i] = AL.getAnimalLoc(i).toString();
-			printt( "Added: " + comboPet_Data[i] );
+			//printt( "Added: " + comboPet_Data[i] );
 		}
 		comboChoosePet = new JComboBox(comboPet_Data);
 		addComboBox(comboChoosePet, existingPetPanel, 10, 170 + 30, 130, 50);
 	}
+	
+	/**
+	 * This method is to update the table - this should be called whenever a pet is added
+	 * Called From Thread
+	 */
 	public void populateTable() {
 		printt( "Populating Table" );
 		petTableModel.setRowCount(0);
@@ -118,18 +130,30 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 		}
 	}
 	
+	/**
+	 * This method is to return the panel that has been created
+	 * @return
+	 */
 	public JPanel returnPanel() {
 		return this.existingPetPanel;
 	}
 	
+	/**
+	 * This method is to handle the ActionEvents that are caused by the button presses
+	 */
 	public void actionPerformed( ActionEvent e ) {
 		if( e.getSource() == btnBack ) {
 			//go back to home screen
 			//this should clear the comboBox too
 			toStartPanel();
+			comboChoosePet.setSelectedIndex(0);
 		}
 		if( e.getSource() == btnSelect ) {
 			//combo selected index will be the same as the animal location in the array
+			printt( "Selected: " + (String) comboChoosePet.getSelectedItem() );
+			AL.setActiveIndex( comboChoosePet.getSelectedIndex() );
+			toInteractPanel();			
+			//send user to other panel
 		}
 	}
 		
