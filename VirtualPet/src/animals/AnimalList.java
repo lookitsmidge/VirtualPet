@@ -42,9 +42,7 @@ public class AnimalList extends ProcessorTemplate{
 		animalArray = new Animal[ arrAnimalsFromFile.length + 5 ]; // Initialises the array with the amount of space it needs plus 5 for extra comfort
 		nextLocation = 0;
 		
-		//Make this a switch - much more efficient
 		//see Interface - basically copy code
-		//make efficient method as code is duplicated
 		
 		//this for loop is to add any animals that are read from array
 		for ( int i = 0; i < arrAnimalsFromFile.length; i++ ) {
@@ -58,6 +56,7 @@ public class AnimalList extends ProcessorTemplate{
 		
 		//all animals should have been added to the array - bc of the for loop
 		printArray();
+		setActiveIndex(-1); // this is the rogue value
 		
 		//end life.. jk
 	}
@@ -105,8 +104,8 @@ public class AnimalList extends ProcessorTemplate{
 			this.nextLocation++;
 			printt("ANIMALLIST", "Animal Added To Array");
 		} else {
-			//cant add - there isnt space - so fuck you
-			// or remake array with more space???
+			//can't add - there isn't space - so fuck you
+			// or re-make array with more space???
 			// Nah, who can be bothered - maybe tomorrow
 			printt("ANIMALLIST", "Array Not big enough. Please Restart the Program to try again");
 		}
@@ -227,9 +226,32 @@ public class AnimalList extends ProcessorTemplate{
 	 * @return name
 	 */
 	public final String getActivesName() {
-		return animalArray[activeIndex].getName();
+		if ( this.activeIndex == -1 ) {
+			return "NONE SELECTED";
+		} else {
+			return this.animalArray[this.activeIndex].getName();
+		}
 	}
 	
+	/**
+	 * This method is to get the value of the animals age and return it
+	 * @return age
+	 */
+	public final int getActivesAge() {
+		if ( this.activeIndex == -1 ) {
+			return -1;
+		} else {
+			return this.animalArray[this.activeIndex].getAge();
+		}
+	}
+	
+	public final String getActivesType() {
+		if ( this.activeIndex == -1 ) {
+			return "NONE SELECTED";
+		} else {
+			return this.animalArray[this.activeIndex].getType();
+		}
+	}
 	/**
 	 * This method is to see if the name input is listed in the array
 	 * @param name
