@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /**
- * 
+ * This Class 
  * @author James Martland 24233781
  *
  */
@@ -44,20 +44,19 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 		
 		//adding all of the components
 		int offset = 30; // bc this panel messes up due to the Tabbed pane ( ignore )
-		printt( "Building lblName" );
 		addLabel(lblName, newPetPanel, 0, 0+ offset, "Name Of Pet:", 100, 50 );
-		printt( "Building txtName" );
+
 		addTextField(txtName, newPetPanel, 150, 0+ offset, 100, 50);
-		printt( "Building lblAge" );
+
 		addLabel(lblAge, newPetPanel, 0, 50+ offset, "Age Of Pet:", 100, 50);
-		printt( "Building txtAge" );
+
 		addTextField(txtAge, newPetPanel, 150, 50+ offset, 100, 50);
-		printt(" Building comboType" );
+
 		addComboBox(comboType, newPetPanel, 20, 100+ offset, 120, 50);
 		
-		printt( "Building btnCancel" );
+
 		addButton(this, newPetPanel, btnCancel, 30, 160+ offset, "Cancel", 100, 50, "This button is to cancel creation and go back to home screen" );
-		printt( "Building btnSubmit" );
+
 		addButton(this, newPetPanel, btnSubmit, 150, 160+ offset, "Submit", 100, 50, "This Button is to save the current pet details as a pet" );
 		
 		printt( "Finished Panel Creation" );
