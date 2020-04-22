@@ -4,7 +4,6 @@ public abstract class ProcessorTemplate {
 	private String tag = "NoTag";
 	
 	public void setTag(String tag) {
-		printt("PRSSORTEMP", "Setting Tag To: " + tag );
 		this.tag = tag;
 	}
 	
@@ -55,4 +54,5 @@ public abstract class ProcessorTemplate {
 	public static void printstatic(String tag, String text) {
 		System.out.println( "[STATIC] [" + tag + "] " + text );
 	}
+	
 }
