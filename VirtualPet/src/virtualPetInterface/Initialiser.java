@@ -48,6 +48,19 @@ public abstract class Initialiser extends ProcessorTemplate {
 	}
 	
 	/**
+	 * This is the method that will enable delays to be used within the program
+	 * @param millis
+	 */
+	public void delay( int millis ) {
+		printt( "Delaying" );
+		try {
+			Thread.sleep(millis);
+		} catch ( InterruptedException e ) {
+			//an error occurred
+		}
+	}
+	
+	/**
 	 * This is the method that is called to turn off the system, this has to be placed here,
 	 * because the way the user interacts with the system inherits from this class,
 	 * this method makes sure that the details are saved before the user terminates
