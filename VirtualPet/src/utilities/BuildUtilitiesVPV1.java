@@ -9,6 +9,7 @@ import virtualPetInterface.Initialiser;
  */
 public class BuildUtilitiesVPV1 extends Initialiser {
 	public Validate V = new Validate();
+	
 	/**
 	 * This method is to save characters and is for ease of development
 	 * @param message
@@ -41,10 +42,9 @@ public class BuildUtilitiesVPV1 extends Initialiser {
 			int x, int y,
 			String text, int sizeX,
             int sizeY, String tooltip) {
-        printt( "button creation algorithm is running" );
         button.setLocation(x, y);
         button.setSize(sizeX, sizeY);
-        printt( "Set Location and Size" );
+
         button.setOpaque(true);
         button.setVisible(true);
         if (text.equals(null) == true) {
@@ -52,9 +52,7 @@ public class BuildUtilitiesVPV1 extends Initialiser {
         } else {
             button.setText(text);
         }
-        printt( "set text" );
         button.addActionListener(l);
-        printt( "add actionListener" );
         button.setToolTipText(tooltip);
         printt("\tButton has been created");
         toAddTo.add(button);
@@ -114,17 +112,17 @@ public class BuildUtilitiesVPV1 extends Initialiser {
     }
 	
 	/**
-	 * This method adds a Table to the panel
-	 * @param table
+	 * This method adds a scroll Pane to the panel
+	 * @param pane
 	 * @param panel
 	 * @param x
 	 * @param y
 	 * @param sizeX
 	 * @param sizeY
 	 */
-	public void addTable( JScrollPane table, JPanel panel, int x, int y, int sizeX, int sizeY) {
-		table.setLocation(x, y);
-		table.setSize(sizeX, sizeY);
-		panel.add(table);
+	public void addScrollPane( JScrollPane pane, JPanel panel, int x, int y, int sizeX, int sizeY) {
+		pane.setLocation(x, y);
+		pane.setSize(sizeX, sizeY);
+		panel.add(pane);
 	}
 }
