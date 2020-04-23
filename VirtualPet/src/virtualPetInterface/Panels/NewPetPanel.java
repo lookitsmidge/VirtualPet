@@ -20,6 +20,7 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 	JLabel lblAge = new JLabel();
 	JTextField txtAge = new JTextField();
 	
+	JLabel lblType = new JLabel();
 	String[] comboType_data = {"Please Choose", "Cat", "Chicken", "Dog", "Goat", "Goose"};
 	
 	//this is because Eclipse was annoying me about this ComboBox
@@ -38,26 +39,38 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 	
 	/**
 	 * This is the method that is to build the panel
+	 * 
+	 * NB validate so frame cannot get too small
 	 */
 	public void initNewPetPanel() {
 		setTag( "NPPanel" );
 		
 		//adding all of the components
 		int offset = 30; // bc this panel messes up due to the Tabbed pane ( ignore )
-		addLabel(lblName, newPetPanel, 0, 0+ offset, "Name Of Pet:", 100, 50 );
+		
+				
+		makeGridX( 2 );
+		int col1 = getXPos();
+		int col2 = nextXPos();
+		makeGridY( 4 );
+		
+				
+		addLabelL(lblName, newPetPanel, col1, getYPos() + offset, "Name Of Pet:");
 
-		addTextField(txtName, newPetPanel, 150, 0+ offset, 100, 50);
+		addTextFieldL(txtName, newPetPanel, col2, getYPos() + offset);
 
-		addLabel(lblAge, newPetPanel, 0, 50+ offset, "Age Of Pet:", 100, 50);
+		addLabelL(lblAge, newPetPanel, col1, nextYPos() + offset, "Age Of Pet:");
 
-		addTextField(txtAge, newPetPanel, 150, 50+ offset, 100, 50);
-
-		addComboBox(comboType, newPetPanel, 20, 100+ offset, 120, 50);
+		addTextFieldL(txtAge, newPetPanel, col2, getYPos() + offset);
+		
+		addLabelL(lblType, newPetPanel, col1, nextYPos() + offset, "Type Of Pet:");
+		
+		addComboBoxL(comboType, newPetPanel, col2, getYPos() + offset);
 		
 
-		addButton(this, newPetPanel, btnCancel, 30, 160+ offset, "Cancel", 100, 50, "This button is to cancel creation and go back to home screen" );
+		addButtonL(this, newPetPanel, btnCancel, col1, nextYPos() + offset, "Cancel", "This button is to cancel creation and go back to home screen" );
 
-		addButton(this, newPetPanel, btnSubmit, 150, 160+ offset, "Submit", 100, 50, "This Button is to save the current pet details as a pet" );
+		addButtonL(this, newPetPanel, btnSubmit, col2, getYPos() + offset, "Submit", "This Button is to save the current pet details as a pet" );
 		
 		printt( "Finished Panel Creation" );
 	}
@@ -98,6 +111,9 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 							txtName.setText("");
 							txtAge.setText("");
 							comboType.setSelectedIndex(0);
+							optPane( "Pet Has Been Added" );
+							newPetAdded = true;
+							toStartPanel();
 						} else {
 							printt( "age must be an integer" );
 							optPane( "Age Must Be An Integer" );

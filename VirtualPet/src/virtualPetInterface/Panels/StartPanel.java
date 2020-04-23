@@ -21,9 +21,9 @@ public class StartPanel extends PanelCommander  implements ActionListener, Runna
 	 */
 	@Override
 	public void run() {
-		printt("Thread - Building Start panel");
+		printt( "Thread - Building Start panel" );
 		initStartPanel();
-		// use (threadName).join; in other class		
+		printt( "Thread - Finished panel Creation" );
 	}
 	
 	/**
@@ -33,25 +33,15 @@ public class StartPanel extends PanelCommander  implements ActionListener, Runna
 		setTag( "STARTPANEL" );
 		startPanel = new JPanel( null );
 		
-		// this is where all of the code that builds the panel will be 
-		printt( "building btnExisting" );
-		addButton(this, startPanel, btnExisting,
-				40, 40, "Existing", getBtnSizeXLarge(), getBtnSizeYLarge(),
+		makeGridX(2);
+		makeGridY(2);
+		addButtonL( this, startPanel, btnExisting,
+				getXPos(), nextYPos(), "Existing",
 				"This Button is to pick a pet that is already stored" );
-		printt( "building btnNew" );
-		addButton(this, startPanel, btnNew,
-				150, 40, "New", getBtnSizeXLarge(), getBtnSizeYLarge(),
-				"This Button is to create a new pet");
-		
-		printt( "Finished panel Creation" );
-		
-		
-		/*
-		 * 
-		 * 
-		 * 
-		 * 
-		 */
+
+		addButtonL( this, startPanel, btnNew,
+				nextXPos(), getYPos(), "New",
+				"This Button is to create a new pet" );
 	}
 	
 	/**

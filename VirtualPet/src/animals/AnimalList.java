@@ -219,6 +219,11 @@ public class AnimalList extends ProcessorTemplate{
 	 */
 	public final void setActiveIndex(int index) {
 		this.activeIndex = index;
+		try {
+			printt( "Active Index set to: " + index + "\n\t" + animalArray[index].toString() );
+		} catch ( ArrayIndexOutOfBoundsException e ) {
+			//do nothing
+		}
 	}
 	
 	/**

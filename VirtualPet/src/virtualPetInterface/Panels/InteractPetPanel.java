@@ -28,31 +28,49 @@ public class InteractPetPanel extends PanelCommander implements ActionListener, 
 		printt( "Thread - Building Interact Pet Panel" );
 		initInteractPetPanel();
 	}
+	public void test() {
+		printt("hello");
+	}
 	
 	/**
 	 * This method is to build the panel that the user will interact with the virtual pet in
 	 */
 	public void initInteractPetPanel() {
-		//code to build panel
-		addButton( this, interactPetPanel, btnBack , 0, 0 + offset, "Back", 100, 50, "This button will take the user back to the Existing Pet Panel" );
+		makeGridX(4);
+		makeGridY(6);
+		int col1 = getXPos();
+		int col2 = nextXPos();
+		int col3 = nextXPos();
+		int col4 = nextXPos();
 		
-		addLabel( lblName, interactPetPanel, 150, 0 + offset, "Name: " + AL.getActivesName(), 100, 50 );
+		addButtonR( this, interactPetPanel, btnBack , col1, getYPos() + offset, "Back", "This button will take the user back to the Existing Pet Panel", 4 );
 		
-		addLabel(lblAge, interactPetPanel, 250, 0 + offset, "Age: " + AL.getActivesAge(), 100, 50);
+		addLabelR(lblType, interactPetPanel, col2, getYPos() + offset, "Type: " + AL.getActivesType(), 4);
 		
-		//addLabel(lblType, interactPetPanel, x, y, text, sizeX, sizeY);
-		/*
-		printt( "Building Speak Button" );
+		addLabelR(lblAge, interactPetPanel, col3, getYPos() + offset, "Age: " + AL.getActivesAge(), 5 );
 		
-		printt( "Building Play Button" );
+		addLabelR( lblName, interactPetPanel, col4-40, getYPos() + offset, "Name: " + AL.getActivesName(), 2 );
 		
-		printt( "Building Feed Button" );
+		addScrollPane( txtLogWindowScroll, interactPetPanel, col3, nextYPos() + offset, frameSizeX - col3, frameSizeY - getYPos() );
 		
-		printt( "Building toggleSleepWake Button" );
+		addButtonR( this, interactPetPanel, btnSpeak, col1, getYPos() + offset, "Speak", "This button will make your pet speak", 4);
+
+		addButtonR( this, interactPetPanel, btnPlay, col2, getYPos() + offset, "Play", "This button will make your pet play", 4);
+
+		addButtonR( this, interactPetPanel, btnFeed, col1, nextYPos() + offset, "Feed", "This button will feed your pet", 4);
 		
-		printt( "Building Text Area" );
-		*/
+		addButtonR( this, interactPetPanel, btnToggleSleepWake, col2, getYPos() + offset, "Sleep", "This button will make your pet sleep or wake up", 4);
+
 	}
+	
+	/*
+	 * This was a test to update - maybe fix? many null pointer exception things
+	public void updateVals() {
+		printt("updating");
+		lblName.setText( "Name: " + AL.getActivesName() );
+		lblAge.setText( "Age: " + AL.getActivesAge() );
+	}
+	*/
 	
 	public JPanel returnPanel() {
 		return this.interactPetPanel;
@@ -63,6 +81,7 @@ public class InteractPetPanel extends PanelCommander implements ActionListener, 
 			toExistingnPetPanel();
 			AL.setActiveIndex(-1);
 		}
+		
 		
 		
 	}

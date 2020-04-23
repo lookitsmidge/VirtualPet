@@ -27,6 +27,8 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 	
 	
 	String[] comboPet_Data = new String[0];
+	static int tmpxLocxForComboBox;
+	static int tmpLocyForComboBox;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	JComboBox comboChoosePet = new JComboBox(comboPet_Data);
@@ -72,12 +74,17 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 	public void initExistingPetPanel() {
 		setTag( "ExistingPetPnl" );
 		int offset = 30;
-		addButton(this, existingPetPanel, btnBack, 0, 0 + offset, "Back", 100, 50, "This button will take you back to the home screen");
+		makeGridX( 2 );
+		makeGridY( 5 );
 		
-		addScrollPane(petTableScroll, existingPetPanel, 0, 60 + offset, 300, 100);
-		
-		addButton(this, existingPetPanel, btnSelect, 150, 170 + offset, "Select", 100, 50, "This Button is to select the animal currently in the combo box");
-		
+		tmpxLocxForComboBox = getXPos();
+		addButtonL(this, existingPetPanel, btnBack, getXPos(), getYPos() + offset, "Back", "This button will take you back to the home screen");
+
+		addScrollPane(petTableScroll, existingPetPanel, 5, nextYPos() + offset, frameSizeX - 10, makeInt( frameSizeY/2 ) );
+		nextYPos();
+		nextYPos();
+		addButtonL(this, existingPetPanel, btnSelect, nextXPos(), nextYPos() + offset, "Select", "This Button is to select the animal currently in the combo box");
+		tmpLocyForComboBox = getYPos();
 		updateGUI();
 	}
 	
@@ -112,7 +119,7 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 			//printt( "Added: " + comboPet_Data[i] );
 		}
 		comboChoosePet = new JComboBox(comboPet_Data);
-		addComboBox(comboChoosePet, existingPetPanel, 10, 170 + 30, 130, 50);
+		addComboBoxL(comboChoosePet, existingPetPanel, tmpxLocxForComboBox, tmpLocyForComboBox + 30 );
 	}
 	
 	/**

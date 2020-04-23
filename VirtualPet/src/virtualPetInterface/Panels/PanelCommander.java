@@ -13,7 +13,7 @@ import utilities.BuildUtilitiesVPV1;
 public class PanelCommander extends BuildUtilitiesVPV1 {
 	JFrame frame = new JFrame("VirtualPet");
 	static JTabbedPane tabs; // making this static is what enables the thread action listeners to work
-	
+	static boolean newPetAdded = false;
 	WindowListener exitListener = new WindowAdapter() {
 		@Override
 		public void windowClosing(WindowEvent e) {
@@ -22,13 +22,6 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 		}
 	};
 	
-	//This is for responsive Layout
-	private Rectangle recFrame;
-	static protected int frameSizeX;
-	protected int tmpFrameSizeX;
-	static protected int frameSizeY;
-	protected int tmpFrameSizeY;
-	//end of responsive Layout options
 	
 	//List of all panels
 	StartPanel SP;
@@ -57,9 +50,9 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 					tmpFrameSizeX = recFrame.width;
 					tmpFrameSizeY = recFrame.height;
 					if ( tmpFrameSizeX == frameSizeX  && tmpFrameSizeY == frameSizeY) {
-						//nothing needs to happen as there is no change in size
+						//Do Nothing - go to delay
 					} else {
-						
+						//this is if there is a change in size
 						frameSizeX = tmpFrameSizeX;
 						frameSizeY = tmpFrameSizeY;
 						
@@ -106,16 +99,24 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 	 * ONLY CALLED ONCE
 	 */
 	public void initFrame() {
-		printt( "initialising the frame" );
+		printt( "Initialising the frame" );
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.frame.setSize(300, 300);
+		this.frame.setSize(400, 400);
+		this.frame.setMinimumSize( new Dimension(350, 400) );
 		this.frame.addWindowListener(exitListener);//this adds the exit Listener
 		this.frame.setLayout(null);
 		this.frame.setResizable(true);
+		printt( "Frame Init Complete" );
 	}
 	
+	/**
+	 * This method organises the threads and this is what will be called to reinitialise the system when the layout changes
+	 */
 	public void buildPanels() {
 		
+		printt( "Starting Thread Initialisation" );
+		
+		//NB need to check if responsive Layout works without making new Object ( resource Intensive )
 		//Thread Initialisation
 		SP = new StartPanel();
 		Thread buildStartPanel = new Thread( SP );
@@ -125,8 +126,9 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 		Thread buildExistingPetPanel = new Thread ( EPP );
 		IPP = new InteractPetPanel();
 		Thread buildInteractPetPanel = new Thread ( IPP );
-			
+		
 		//Thread Run
+		printt( "Starting Threads" );
 		buildStartPanel.start();
 		buildNewPetPanel.start();
 		buildExistingPetPanel.start();
@@ -134,11 +136,13 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 			
 		try {
 			//Synchronise the ending of the thread
+			printt( "Syncing Threads" );
 			buildStartPanel.join();
 			buildNewPetPanel.join();
 			buildExistingPetPanel.join();
 			buildInteractPetPanel.join();
 			
+			printt( "Returning panels" );
 			this.startPanel = SP.returnPanel();
 			this.newPetPanel = NPP.returnPanel();
 			this.existingPetPanel = EPP.returnPanel();
@@ -155,8 +159,9 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 	 * This initialises the tabs for the tabbed pane
 	 */
 	public void initTabs() {
-		tabs = new JTabbedPane();
-		tabs.setSize(frameSizeX, frameSizeY + 50);
+		printt( "Initialising Tabs" );
+		tabs = new JTabbedPane(); // need to think if this is going to be needed here
+		tabs.setSize(frameSizeX - 16, frameSizeY + 10 );
 		tabs.setLocation(0, -50);
 		
 		printt( "adding Start tab" );
@@ -183,15 +188,6 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 
 	}
 	
-	/*
-	 * This method is to get the size of buttons based on the size of the frame
-	 */
-	public static int getBtnSizeXLarge() {
-		return (int) Math.round( (0.333)*frameSizeX - (0.05)*frameSizeX );
-	}
-	public int getBtnSizeYLarge() {
-		return (int) Math.round( (0.167) * frameSizeY );
-	}
 	
 	/**
 	 * This makes the user see the New pet Panel
@@ -220,6 +216,22 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 	 * This makes the user see the interact panel
 	 */
 	public void toInteractPanel() {
+		printt("toInteractPanel");
+		
+		IPP = new InteractPetPanel();
+		Thread buildAgain = new Thread( IPP );
+		buildAgain.start();
+		
+		try { 
+			buildAgain.join(); 
+			printt( "Threads Finished " );
+			tabs.removeTabAt(3);
+			tabs.addTab("Interact",  IPP.returnPanel() );
+			
+		} catch( InterruptedException e ) { 
+			errPrint( "An Error Occurred: " + e ); 
+		}
+		
 		tabs.setSelectedIndex(3);
 	}
 }
