@@ -14,12 +14,12 @@ public class InteractPetPanel extends PanelCommander implements ActionListener, 
 	JButton btnPlay = new JButton();
 	JButton btnFeed = new JButton();
 	JButton btnToggleSleepWake = new JButton();
+	JButton btnShowLove = new JButton();
 	JTextArea txtLogWindow = new JTextArea();
 	JScrollPane txtLogWindowScroll = new JScrollPane( txtLogWindow );
 	
 	private int offset = 30;
-	
-	
+		
 	/**
 	 * This method is the overwritten method for the implementation of Runnable, to make this class a thread
 	 */
@@ -60,7 +60,11 @@ public class InteractPetPanel extends PanelCommander implements ActionListener, 
 		addButtonR( this, interactPetPanel, btnFeed, col1, nextYPos() + offset, "Feed", "This button will feed your pet", 4);
 		
 		addButtonR( this, interactPetPanel, btnToggleSleepWake, col2, getYPos() + offset, "Sleep", "This button will make your pet sleep or wake up", 4);
-
+		
+		//showLove
+		
+		
+		//special
 	}
 	
 	/*
