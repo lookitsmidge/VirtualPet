@@ -3,7 +3,9 @@ import javax.swing.*;
 import java.awt.event.*;
 public class InteractPetPanel extends PanelCommander implements ActionListener, Runnable {
 	JPanel interactPetPanel = new JPanel( null );
-	
+	// edit?
+	// delete 
+	// ( thread that increases age )
 	JButton btnBack = new JButton();
 	
 	JLabel lblName = new JLabel();
