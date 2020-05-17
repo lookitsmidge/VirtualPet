@@ -1,44 +1,43 @@
 package utilities;
 /**
  * The aim of this method is to enable me to read and write animals to a file and back from a file
- * @author James Martland
- *
+ * @author James Martland 24233781
  */
 import java.io.*;
 public class FileUtils extends ProcessorTemplate {
 	
-	BufferedReader in;
+	private BufferedReader in;
 	private String filePath;
 	private boolean fileWriteOnline; // this var is to tell the program if the writer has been set up correctly
 	private FileWriter writer;
 	private String spacer;
-	//animal has age, name, type (happiness and fitness but nah) - also id???
 	//method to write to a file (CSV)
 	
-	//method to read from a file (CSV) - same CSV
+	/**
+	 * This is a constructor that sets up FileUtils to be used
+	 * @param filePath
+	 */
 	public FileUtils(String filePath) {
-		setTag( "FILEUTILS" );
+		String nmeFilePath = filePath.substring(0, filePath.length()-4); // this should make it easier to track what is happening
+		setTag( "FILEUTILS_" + nmeFilePath );
 		printt( "Running Constructor" );
 		printt( "[CONF] Default Spacer Set to: NewLine" );
 		this.spacer = "\r";
-		//try statement to make a file and stuff
 		this.filePath = filePath;
 		this.fileWriteOnline = false;
-		//create File and open
 		try {
 			File details = new File(this.filePath);
 			if ( details.createNewFile() ) {
 				// the file has been created
-				// move on
+				//this is ran if the file is empty, as this stops arrayIndexOutOfBounds Exception
+				otWrite("Dog,Max,4" + spacer + "Cat,Toffee,2");
+				// continue
 			} else {
 				//file already exists
 			}
-			
-			
 		} catch ( IOException exc ) {
 			//error occurred - log error?
 		}
-		// - autonomous file opening
 	}
 	
 	/**
@@ -47,13 +46,12 @@ public class FileUtils extends ProcessorTemplate {
 	 * @return contents from file
 	 */
 	public String readFromFile() {
+		printt( "Starting Read From: " + this.filePath );
 		in = null;//sets it to be nothing
-		// use stringbuilder to make it more efficient
 		
 		StringBuilder contents = new StringBuilder();
 		try {
 			in = new BufferedReader( new FileReader(this.filePath) );
-			//Oh my! a nested Try
 			try {
 				String currentLine = "";
 				while ( (currentLine = in.readLine()) != null ) {
@@ -65,9 +63,12 @@ public class FileUtils extends ProcessorTemplate {
 				in.close();
 			}
 		} catch ( FileNotFoundException e ) {
-			//the file wasnt found, maybe you should make the file then.....
+			printt( "File Was Not Found" );
+			//the file wasn't found,
+			contents.append("EMPTY");
 			//initialise the array with blank data - nothing
 		} catch ( IOException e ) {
+			printt( "An Error Occurred During Read: " + e );
 			//just in case anything breaks
 		}
 		return contents.toString();
@@ -96,7 +97,7 @@ public class FileUtils extends ProcessorTemplate {
 	}
 	
 	/**
-	 * This method Initialises the filereader
+	 * This method Initialises the FileReader
 	 * @param toWrite
 	 * @throws IOException 
 	 */
@@ -105,11 +106,11 @@ public class FileUtils extends ProcessorTemplate {
 		if ( !this.fileWriteOnline ) {			
 			
 		} else if ( this.fileWriteOnline ) {
-			// Filewriter already init-ed - close and re init
+			// FileWriter already started - close and restart
 			this.writer = null;
 			
 		} else {
-			//dunno
+			// continue
 		}
 		this.writer = new FileWriter(this.filePath, false);
 		this.fileWriteOnline = true;
@@ -124,13 +125,13 @@ public class FileUtils extends ProcessorTemplate {
 	public void write(String item) throws IOException {
 		printt( "Writing: " + item );
 		if ( this.fileWriteOnline ) {
-			//write ok
+			//write OK
 			writer.write(item);
 			writer.write(this.spacer);
 			printt("\tWritten");
 		} else {
-			// Doesnt Work
-			finishWrite();// test this
+			// Doesn't Work
+			finishWrite();
 		}
 	}
 	
@@ -146,6 +147,22 @@ public class FileUtils extends ProcessorTemplate {
 			printt("File has been successfully written to");
 		} else {
 			//file not opened
+		}
+	}
+	
+	/**
+	 * This method is to write an item to a file but only write one file
+	 * @param item
+	 * @throws IOException
+	 */
+	public void otWrite (String item){
+		printt( "Logged Amount" );
+		try {
+		FileWriter otWriter = new FileWriter(this.filePath);
+		otWriter.write( item );
+		otWriter.close();
+		} catch (IOException e) {
+			errPrint( "An Error Occurred when writing: " + e );
 		}
 	}
 }

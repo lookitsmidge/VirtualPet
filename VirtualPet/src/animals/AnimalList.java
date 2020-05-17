@@ -1,24 +1,15 @@
 package animals;
 import utilities.*;
 import java.io.IOException;
+
 /**
  * This class holds the animal array & all of its functions
  * and is the way that all of the animals will be accessed
- * @author James Martland
- *
+ * @author James Martland 24233781
  */
 public class AnimalList extends ProcessorTemplate{
 
-	/**
-	 *  this shitty class should have:
-	 *  	animal array (partially tested by yours truly)
-	 *  	method to populate said array
-	 *  	method to delete item from array,
-	 *  	add new pet
-	 *  	when importing array - find out how many and then add extra 5 spaces to array count to make sure that the user can do what the fudge they want
-	 *  		(adding more pets wise)
-	 */
-	FileUtils FU;
+	static FileUtils FU;
 	private Animal[] animalArray;
 	private int nextLocation;
 	private int activeIndex; // this is the users current pet to interact with
@@ -35,16 +26,12 @@ public class AnimalList extends ProcessorTemplate{
 		FU =  new FileUtils(filePath);
 		setTag("ANIMALLIST");
 		printt("Initialising stuff... this will either be instantanious or take 3 yrs, not decided yet");
-		//calls readFromFile method and then populates array
-		//this is to test to see if this works
+
 		String[] arrAnimalsFromFile = FU.toArray( FU.readFromFile() );
 		
-		animalArray = new Animal[ arrAnimalsFromFile.length + 5 ]; // Initialises the array with the amount of space it needs plus 5 for extra comfort
+		// Initialises the array with the amount of space it needs plus 5 for extra comfort
+		animalArray = new Animal[ arrAnimalsFromFile.length + 5 ]; 
 		nextLocation = 0;
-		
-		//Make this a switch - much more efficient
-		//see Interface - basically copy code
-		//make efficient method as code is duplicated
 		
 		//this for loop is to add any animals that are read from array
 		for ( int i = 0; i < arrAnimalsFromFile.length; i++ ) {
@@ -53,16 +40,20 @@ public class AnimalList extends ProcessorTemplate{
 			
 			//I changed this to be a switch - this is much more efficient than the if statement that was here before
 			animalSwitch( animalTmp[0], animalTmp[1], Integer.parseInt(animalTmp[2]) );
-
-		} // at this point everything should have been made and stuff - added to the array
-		
-		//all animals should have been added to the array - bc of the for loop
+		}
 		printArray();
 		
-		//end life.. jk
+		setActiveIndex(-1); // this is the rogue value
 	}
 	
+	/**
+	 * This method is to replace the switch that was in two locations, It is more efficient than an if statement
+	 * @param type - type of animal it is
+	 * @param name - name of the animal - string
+	 * @param age - age of the animal - must be integer
+	 */
 	public void animalSwitch(String type, String name, int age ) {
+		print("Running AnimalSwitch");
 		switch ( type ) {
 		case "Dog":
 			addToArray( new Dog( name, age ) );
@@ -91,16 +82,11 @@ public class AnimalList extends ProcessorTemplate{
 	 */
 	public void addToArray(Animal animal) {
 		if (animalArray.length >= nextLocation ) {
-			//the shit show continues
-			//add this shit to the array
 			
-			animalArray[nextLocation] = animal;
-			nextLocation++;
+			this.animalArray[nextLocation] = animal;
+			this.nextLocation++;
 			printt("ANIMALLIST", "Animal Added To Array");
 		} else {
-			//cant add - there isnt space - so fuck you
-			// or remake array with more space???
-			// Nah, who can be bothered - maybe tomorrow
 			printt("ANIMALLIST", "Array Not big enough. Please Restart the Program to try again");
 		}
 	}
@@ -111,11 +97,6 @@ public class AnimalList extends ProcessorTemplate{
 	 * @param index
 	 */
 	public void deleteFromArray(int index) {
-		//validation of index should have happened before
-		//find index
-		// again auth??
-		// remove
-		// cycle items
 		
 		animalArray[index] = null;
 		for ( int i = index; i < nextLocation - 1; i ++ ) {
@@ -140,7 +121,7 @@ public class AnimalList extends ProcessorTemplate{
 	public void writeArrayToFile() {
 		try {
 			FU.initWrite();
-			for ( int i=0; i < nextLocation; i++ ) {
+			for ( int i=0; i < this.nextLocation; i++ ) {
 				FU.write( animalArray[i].toString() );
 			}
 			FU.finishWrite();
@@ -152,44 +133,58 @@ public class AnimalList extends ProcessorTemplate{
 	/**
 	 * This method is to make the animal at the active index speak
 	 */
-	public final void speak() {
-		animalArray[activeIndex].speak();
+	public final String speak() {
+		return animalArray[activeIndex].speak();
 	}
 	
 	/**
 	 * This method is to make the animal at the active index eat
 	 */
-	public final void eat() {
-		animalArray[activeIndex].eat();
+	public final String eat() {
+		return animalArray[activeIndex].eat();
 	}
 	
 	/**
 	 * This method is to make the animal at the active index play
 	 */
-	public final void play() {
-		animalArray[activeIndex].play();
+	public final String play() {
+		return animalArray[activeIndex].play();
 	}
 	
 	/**
 	 * This method is to make the animal at the active index sleep
 	 */
-	public final void sleep() {
-		animalArray[activeIndex].sleep();
+	public final String sleep() {
+		return animalArray[activeIndex].sleep();
 	}
 	
 	/**
 	 * This method is to make the animal at the active index wake
 	 */
-	public final void wake() {
-		animalArray[activeIndex].wake();
+	public final String wake() {
+		return animalArray[activeIndex].wake();
 	}
 	
-	//JOE - UNCOMMENT THIS WHEN MAKING METHODS
 	/**
 	 * This method is to make the animal do something special
 	 */
-	public final void special() {
-		animalArray[activeIndex].special();
+	public final String special() {
+		return animalArray[activeIndex].special();
+	}
+	
+	/**
+	 * This method is to make the animal eat
+	 */
+	public final String feed() {
+		return animalArray[activeIndex].eat();
+	}
+	
+	/**
+	 * This method is to show the pet love
+	 * @return
+	 */
+	public final String showLove() {
+		return animalArray[activeIndex].showLove();
 	}
 	
 	/**
@@ -214,6 +209,11 @@ public class AnimalList extends ProcessorTemplate{
 	 */
 	public final void setActiveIndex(int index) {
 		this.activeIndex = index;
+		try {
+			printt( "Active Index set to: " + index + "\n\t" + animalArray[index].toString() );
+		} catch ( ArrayIndexOutOfBoundsException e ) {
+			//do nothing
+		}
 	}
 	
 	/**
@@ -221,6 +221,61 @@ public class AnimalList extends ProcessorTemplate{
 	 * @return name
 	 */
 	public final String getActivesName() {
-		return animalArray[activeIndex].getName();
+		if ( this.activeIndex == -1 ) {
+			return "NONE SELECTED";
+		} else {
+			return this.animalArray[this.activeIndex].getName();
+		}
+	}
+	
+	/**
+	 * This method is to get the value of the animals age and return it
+	 * @return age
+	 */
+	public final int getActivesAge() {
+		if ( this.activeIndex == -1 ) {
+			return -1;
+		} else {
+			return this.animalArray[this.activeIndex].getAge();
+		}
+	}
+	
+	/**
+	 * This method is to get the type of the active animal
+	 * @return
+	 */
+	public final String getActivesType() {
+		if ( this.activeIndex == -1 ) {
+			return "NONE SELECTED";
+		} else {
+			return this.animalArray[this.activeIndex].getType();
+		}
+	}
+	
+	/**
+	 * This method is to see if the name input is listed in the array
+	 * @param name
+	 * @return index ( of the name that is found or -1 )
+	 */
+	public int findNme(String name) {
+		int index = -1;
+		for ( int i = 0; i < this.nextLocation; i++ ) {
+			if ( animalArray[i].getName().toLowerCase().equals( name.toLowerCase() ) ) {
+				index = i;
+				break;
+			} else {
+				//nextVal
+			}
+		}
+		return index;
+	}
+	
+	/**
+	 * This method retrieved the animal at the location that is the parameter
+	 * @param i
+	 * @return animal at location i
+	 */
+	public Animal getAnimalLoc( int i ) {
+		return animalArray[i];
 	}
 }
