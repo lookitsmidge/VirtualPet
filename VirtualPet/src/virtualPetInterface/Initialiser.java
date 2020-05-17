@@ -1,10 +1,8 @@
 package virtualPetInterface;
 /**
  * This is an abstract class that is to be implemented in Interface, this will help to make interface easier to read and stuff
- * @author James Martland, 24233781 <insert your name and student ID if you edit the document at all>
- *
+ * @author James Martland 24233781
  */
-
 import animals.AnimalList;
 import utilities.*;
 import virtualPetInterface.Panels.*;
@@ -14,7 +12,7 @@ public abstract class Initialiser extends ProcessorTemplate {
 	
 	//AL has to be static so that the multiple threads accessing it have the same AL
 	protected static AnimalList AL = new AnimalList("AnimalDetails.csv"); // this is animalList, this is where all of the animal array is stored among other things
-	protected boolean run; // might not need this when gui is built
+	protected boolean run; // might not need this when GUI is built
 	CommandProcessor CP = new CommandProcessor();// this is the class that should do all the checking for the commands for the 
 	PanelCommander PC;
 	

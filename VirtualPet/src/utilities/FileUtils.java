@@ -1,45 +1,41 @@
 package utilities;
 /**
  * The aim of this method is to enable me to read and write animals to a file and back from a file
- * @author James Martland
- *
+ * @author James Martland 24233781
  */
 import java.io.*;
 public class FileUtils extends ProcessorTemplate {
 	
-	BufferedReader in;
+	private BufferedReader in;
 	private String filePath;
 	private boolean fileWriteOnline; // this var is to tell the program if the writer has been set up correctly
 	private FileWriter writer;
 	private String spacer;
-	//animal has age, name, type (happiness and fitness but nah) - also id???
 	//method to write to a file (CSV)
 	
-	//method to read from a file (CSV) - same CSV
+	/**
+	 * This is a constructor that sets up FileUtils to be used
+	 * @param filePath
+	 */
 	public FileUtils(String filePath) {
 		String nmeFilePath = filePath.substring(0, filePath.length()-4); // this should make it easier to track what is happening
 		setTag( "FILEUTILS_" + nmeFilePath );
 		printt( "Running Constructor" );
 		printt( "[CONF] Default Spacer Set to: NewLine" );
 		this.spacer = "\r";
-		//try statement to make a file and stuff
 		this.filePath = filePath;
 		this.fileWriteOnline = false;
-		//create File and open
 		try {
 			File details = new File(this.filePath);
 			if ( details.createNewFile() ) {
 				// the file has been created
-				// move on
+				// continue
 			} else {
 				//file already exists
 			}
-			
-			
 		} catch ( IOException exc ) {
 			//error occurred - log error?
 		}
-		// - autonomous file opening
 	}
 	
 	/**
@@ -50,12 +46,10 @@ public class FileUtils extends ProcessorTemplate {
 	public String readFromFile() {
 		printt( "Starting Read From: " + this.filePath );
 		in = null;//sets it to be nothing
-		// use stringbuilder to make it more efficient
 		
 		StringBuilder contents = new StringBuilder();
 		try {
 			in = new BufferedReader( new FileReader(this.filePath) );
-			//Oh my! a nested Try
 			try {
 				String currentLine = "";
 				while ( (currentLine = in.readLine()) != null ) {
@@ -68,7 +62,8 @@ public class FileUtils extends ProcessorTemplate {
 			}
 		} catch ( FileNotFoundException e ) {
 			printt( "File Was Not Found" );
-			//the file wasn't found, maybe you should make the file then.....
+			//the file wasn't found,
+			contents.append("EMPTY");
 			//initialise the array with blank data - nothing
 		} catch ( IOException e ) {
 			printt( "An Error Occurred During Read: " + e );
@@ -109,11 +104,11 @@ public class FileUtils extends ProcessorTemplate {
 		if ( !this.fileWriteOnline ) {			
 			
 		} else if ( this.fileWriteOnline ) {
-			// Filewriter already init-ed - close and re init
+			// FileWriter already started - close and restart
 			this.writer = null;
 			
 		} else {
-			//dunno
+			// continue
 		}
 		this.writer = new FileWriter(this.filePath, false);
 		this.fileWriteOnline = true;
@@ -128,13 +123,13 @@ public class FileUtils extends ProcessorTemplate {
 	public void write(String item) throws IOException {
 		printt( "Writing: " + item );
 		if ( this.fileWriteOnline ) {
-			//write ok
+			//write OK
 			writer.write(item);
 			writer.write(this.spacer);
 			printt("\tWritten");
 		} else {
 			// Doesn't Work
-			finishWrite();// test this
+			finishWrite();
 		}
 	}
 	

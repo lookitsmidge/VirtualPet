@@ -10,7 +10,6 @@ import java.awt.event.*;
  * 
  * this class handles its own actionListeners.
  * @author James Martland 24233781
- *
  */
 public class ExistingPetPanel extends PanelCommander implements ActionListener, Runnable{
 	//where I declare all of my components
@@ -47,7 +46,7 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 					printt( "THREAD: popTbl: Finished" );
 				}
 			}
-			);
+		);
 	private Thread popCmbo = new Thread(
 			new Runnable() {
 				public void run() {
@@ -56,7 +55,7 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 					printt( "THREAD: popCmbo: Finished" );
 				}
 			}
-			);
+		);
 	
 	//End of Threads
 	/**
@@ -111,12 +110,10 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void updateComboBox() {
-		// Reinitialises the variable
 		printt( "Updating Combo Box" );
 		comboPet_Data = new String[AL.getNextLocation()];
 		for( int i = 0; i < AL.getNextLocation(); i++) {
 			comboPet_Data[i] = AL.getAnimalLoc(i).toString();
-			//printt( "Added: " + comboPet_Data[i] );
 		}
 		comboChoosePet = new JComboBox(comboPet_Data);
 		addComboBoxL(comboChoosePet, existingPetPanel, tmpxLocxForComboBox, tmpLocyForComboBox + 30 );
@@ -160,7 +157,6 @@ public class ExistingPetPanel extends PanelCommander implements ActionListener, 
 			printt( "Selected: " + (String) comboChoosePet.getSelectedItem() );
 			AL.setActiveIndex( comboChoosePet.getSelectedIndex() );
 			toInteractPanel();			
-			//send user to other panel
 		}
 	}
 		

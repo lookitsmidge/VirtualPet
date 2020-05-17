@@ -3,6 +3,10 @@ package utilities;
 public abstract class ProcessorTemplate {
 	private String tag = "NoTag";
 	
+	/**
+	 * This sets the tag for print statements
+	 * @param tag
+	 */
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
@@ -24,7 +28,7 @@ public abstract class ProcessorTemplate {
 	}
 	
 	/**
-	 * This method is the custom print method that will be used to effectivley print things to command line
+	 * This method is the custom print method that will be used to effectively print things to command line
 	 * @param text
 	 */
 	public void print(String text) {
@@ -54,5 +58,4 @@ public abstract class ProcessorTemplate {
 	public static void printstatic(String tag, String text) {
 		System.out.println( "[STATIC] [" + tag + "] " + text );
 	}
-	
 }

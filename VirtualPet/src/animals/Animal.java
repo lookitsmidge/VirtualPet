@@ -1,37 +1,68 @@
 package animals;
 import utilities.ProcessorTemplate;
+/**
+ * This class is the main class for the animals to inherit from
+ * @author James Martland 24233781
+ *
+ */
 public abstract class Animal extends ProcessorTemplate {
 	//these are the universal attributes of all of the animals that are going to be created
 	private String name;
 	private int age;
 	public String type;
-	protected boolean asleep; // to be implemented
-//	protected int happiness = 10; // out of 20
-//	protected int fitness = 5; // out of 10
+	protected boolean asleep;
+
 	
 	/**
 	 * This is the constructor for the class
 	 */
-
 	public Animal(String name, int age) {
 		this.name = name;
 		this.age = age;
 		//Run a Thread Test? to decrease Happiness
 	}
 	
-	public abstract void speak();
-
-	public abstract void eat();
-
-	public abstract void showLove();
-
-	public abstract void sleep();
-
-	public abstract void wake();
-
-	public abstract void play();
+	/**
+	 * This is an abstract Class, this will be implemented in subclasses of this
+	 * @return response
+	 */
+	public abstract String speak();
 	
-	public abstract void special();
+	/**
+	 * This is an abstract Class, this will be implemented in subclasses of this
+	 * @return response
+	 */
+	public abstract String eat();
+	
+	/**
+	 * This is an abstract Class, this will be implemented in subclasses of this
+	 * @return response
+	 */
+	public abstract String showLove();
+	
+	/**
+	 * This is an abstract Class, this will be implemented in subclasses of this
+	 * @return response
+	 */
+	public abstract String sleep();
+	
+	/**
+	 * This is an abstract Class, this will be implemented in subclasses of this
+	 * @return response
+	 */
+	public abstract String wake();
+	
+	/**
+	 * This is an abstract Class, this will be implemented in subclasses of this
+	 * @return response
+	 */
+	public abstract String play();
+	
+	/**
+	 * This is an abstract Class, this will be implemented in subclasses of this
+	 * @return response
+	 */
+	public abstract String special();
 	
 	/**
 	 * This is to set the value of the class variable age

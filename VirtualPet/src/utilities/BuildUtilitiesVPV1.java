@@ -5,9 +5,9 @@ import java.awt.Rectangle;
 import java.awt.event.*;
 import virtualPetInterface.Initialiser;
 /**
- * This Class should be left alone -
+ * This Class should be left alone Build Utilities Virtual Pet Version 1
  * this class is to build and add the elements to a panel
- * @author James Martland
+ * @author James Martland 24233781
  */
 public class BuildUtilitiesVPV1 extends Initialiser {
 	public Validate V = new Validate();
@@ -59,7 +59,6 @@ public class BuildUtilitiesVPV1 extends Initialiser {
 	}
 	
 	//end of responsive Layout options
-	
 	
 	/**
 	 * This method is to save characters and is for ease of development
@@ -311,12 +310,18 @@ public class BuildUtilitiesVPV1 extends Initialiser {
 	public int makeInt( Double input ) {
 		return (int) Math.round( input );
 	}
+	
+	/**
+	 * This is to round an integer
+	 * @param input
+	 * @return
+	 */
 	public int makeInt( int input ) {
 		return (int) Math.round( input );
 	}
 	
 	/**
-	 * This is experimental
+	 * This is experimental, it adds the option to position elements as a grid
 	 */
 	public void makeGridX( int cols) {
 		int spacePerCell = makeInt( frameSizeX / cols );
@@ -325,14 +330,27 @@ public class BuildUtilitiesVPV1 extends Initialiser {
 		this.xPos = makeInt( (frameSizeX / cols) - spacerx - getBtnSizeXLarge() );
 	}
 	
+	/**
+	 * This is to return the grid x position
+	 * @return
+	 */
 	public int getXPos() {
 		return this.xPos;
 	}
+	
+	/**
+	 * This is to return the next grid x position
+	 * @return
+	 */
 	public int nextXPos() {
 		this.xPos += getBtnSizeXLarge() + 2 * spacerx;
 		return this.xPos;
 	}
 	
+	/**
+	 * This is to make the grid in the Y direction
+	 * @param rows
+	 */
 	public void makeGridY( int rows ) {
 
 		int spacePerCell = makeInt( frameSizeY / rows );
@@ -340,14 +358,22 @@ public class BuildUtilitiesVPV1 extends Initialiser {
 		this.spacery = makeInt( roomPerCell / 4 );
 		this.yPos = this.spacery;
 	}
+	
+	/**
+	 * This is to get the grid y position
+	 * @return
+	 */
 	public int getYPos() {
 		return this.yPos;
 	}
+	
+	/**
+	 * This is to get the next grid y position
+	 * @return
+	 */
 	public int nextYPos() {
 		this.yPos += getBtnSizeYLarge() + spacery;
 		printt("\t\tNextY: " + yPos );
 		return this.yPos;
 	}
-	
-	
 }

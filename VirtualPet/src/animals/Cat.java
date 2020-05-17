@@ -1,60 +1,94 @@
 package animals;
 import java.util.Random;
+/**
+ * This class is for the pet of type Cat, that is a subclass of the animal class, which is abstract
+ * @author James Martland 24233781
+ */
 public class Cat extends Animal{
+	
 	String[] toys = {"Wool", "lazer"};
 	String[] birds = {"Bluetit", "Woodpecker", "Eagle", "Vulture", "Emu", "Dodo"};
+	
+	
+	
+	/**
+	 * This is the constructor for the cat animal
+	 * @param name
+	 * @param age
+	 */
 	public Cat(String name, int age) {
 		super(name, age);
 		this.type = "Cat";
 	}
 	
 	/**
-	 * This is a method to test shit
+	 * This method displays all the relevant details
 	 */
 	public void testWorks() {
 		printt("CAT", "Name: " + getName() + ", Age: " + getAge());
 	}
-	//randomise play with toy responses
-
+	
+	/**
+	 * This method makes the animal speak
+	 */
 	@Override
-	public void speak() {
+	public String speak() {
 		print("Nyaa");
-		
-	}
-
-	@Override
-	public void eat() {
-		print(getName() + "is eating fish");
-		
-	}
-
-	@Override
-	public void showLove() {
-		print("Purr <3");
-		
-	}
-
-	@Override
-	public void sleep() {
-		print(getName() + "falls asleep");
-		
-	}
-
-	@Override
-	public void wake() {
-		print(getName() + "wakes up");
-		
-	}
-
-	@Override
-	public void play() {
-		print(getName() + "is chasing a piece of string");
-		
+		return "Nyaa";
 	}
 	
+	/**
+	 * This method makes the animal eat
+	 */
 	@Override
-	public void special() {
+	public String eat() {
+		print(getName() + " is eating fish");
+		return getName() + " is eating fish";
+	}
+	
+	/**
+	 * This method makes the animal show love
+	 */
+	@Override
+	public String showLove() {
+		print("Purr <3");
+		return "Purr <3";
+	}
+	
+	/**
+	 * This method makes the animal sleep
+	 */
+	@Override
+	public String sleep() {
+		print(getName() + " falls asleep");
+		return getName() + " falls asleep";
+	}
+	
+	/**
+	 * This method makes the animal wake up
+	 */
+	@Override
+	public String wake() {
+		print(getName() + " wakes up");
+		return getName() + " wakes up";
+	}
+	
+	/**
+	 * This method makes the animal play
+	 */
+	@Override
+	public String play() {
+		print(getName() + " is chasing a piece of string");
+		return getName() + " is chasing a piece of string";
+	}
+	
+	/**
+	 * This method makes the animal do a special thing
+	 */
+	@Override
+	public String special() {
 		int rnd = new Random().nextInt(birds.length);
-		print(getName() + "brings back a " + birds[rnd]);
+		print(getName() + " brings back a " + birds[rnd]);
+		return getName() + " brings back a " + birds[rnd];
 	}
 }

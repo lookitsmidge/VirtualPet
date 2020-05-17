@@ -5,6 +5,7 @@ import java.util.Scanner;
 import utilities.ProcessorTemplate;
 import java.util.Random;
 import animals.*;
+
 /**
  * This class is aimed to be the way of processing the commands from the user
  * @author James Martland 24233781
@@ -52,15 +53,13 @@ public class CommandProcessor extends ProcessorTemplate {
 	 * @return userInput - but lowercase
 	 */
 	public String getInputLC(String Text) {
-		//yet to properly validate input for escape characters and commas - would break system
 		printt( Text );
 		//must be at least one char long - not blank
 		String temp;
 		boolean runLoop = true;
 		do {
-			temp = ( in.nextLine() ).toLowerCase(); // i suppose i could trim / strip it here??
+			temp = ( in.nextLine() ).toLowerCase();
 			if ( temp.isEmpty() ) {
-				// loop again
 				printt( "This is not a valid input - Must input something" );
 			} else {
 				runLoop = false;
@@ -69,6 +68,12 @@ public class CommandProcessor extends ProcessorTemplate {
 		return temp;
 	}
 	
+	/**
+	 * This method is to get the input that is part of a list from command line
+	 * @param text
+	 * @param listOfResponses
+	 * @return
+	 */
 	public String getInputPartOf(String text, String[] listOfResponses) {
 		String input;
 		do {
@@ -97,8 +102,6 @@ public class CommandProcessor extends ProcessorTemplate {
 		int output = -1;
 		do {
 			try {
-				// test with in.nextInt();
-				
 				input = in.nextLine();
 				output = Integer.parseInt(input);// this means it is an integer
 				temp = false;
@@ -107,10 +110,8 @@ public class CommandProcessor extends ProcessorTemplate {
 			} finally {
 				printt("INPUT", "reached Finally");
 			}
-			
 		} while ( temp );
-		
-		
+
 		return output;
 	}
 	
@@ -120,41 +121,37 @@ public class CommandProcessor extends ProcessorTemplate {
 	 * @return
 	 */
 	public int getInputIntRng(String text, int low, int high) {
-		printt("INPUT_RNG", text);// tell use not to input
+		printt("INPUT_RNG", text);// tell user what to input
 		boolean temp = true;
 		String input;
 		int output = -1;
 		do {
 			try {
-				// test with in.nextInt();
 				
 				input = in.nextLine();
 				output = Integer.parseInt(input);// this means it is an integer
+				
 				//now to test the range conditions
 				//the or equal to is for the array - as it starts at 0 - so length is not inclusive
 				if ( output < high && output >= low ) {
 					//meets conditions
 					temp = false;
 				} else {
-					//doesnt meet conditions
+					//doesn't meet conditions
 					printt("INPUT_RNG", "Int Input must be between values: " + low + " and " + high );
 				}
-				
 			} catch ( NumberFormatException exc) {
 				printt("INPUT_RNG", "That is not an integer");
-			} finally {
-				//dont really need this i think
 			}
 			
 		} while ( temp );
-		
-		
+
 		return output;
 	}
 	
 	/**
 	 * This method is to capitalise words, such as names
-	 * https://stackoverflow.com/questions/3904579/how-to-capitalize-the-first-letter-of-a-string-in-java
+	 * Java?, H. and Ghasemi, A., 2020. How To Capitalize The First Letter Of A String In Java?. [online] Stack Overflow. Available at: <https://stackoverflow.com/questions/3904579/how-to-capitalize-the-first-letter-of-a-string-in-java> [Accessed 16 May 2020].
 	 * @param input
 	 * @return input - capitalised
 	 */
@@ -162,9 +159,13 @@ public class CommandProcessor extends ProcessorTemplate {
 		return ( input.substring(0, 1).toUpperCase() + input.substring(1) );
 	}
 	
+	/**
+	 * This method is to be ran when the command line gets an input that isn't a command
+	 * @param AL
+	 */
 	public void notCommand(AnimalList AL) {
 		int chance = r.nextInt(6);
-		if ( chance < 2 ) { // pet is going to speak
+		if ( chance < 2 ) {
 			for ( int i=0; i<r.nextInt(4); i++ ) {
 				AL.speak();
 			}
@@ -172,5 +173,4 @@ public class CommandProcessor extends ProcessorTemplate {
 			
 		}
 	}
-	
 }

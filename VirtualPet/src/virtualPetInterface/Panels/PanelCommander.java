@@ -9,11 +9,18 @@ import utilities.BuildUtilitiesVPV1;
  * don't know if i am going to use this yet - depends on efficiency
  * @author James Martland 24233781
  *
+ * code ideas from
+ * GeeksforGeeks. 2020. Multithreading In Java - Geeksforgeeks. [online] Available at: <https://www.geeksforgeeks.org/multithreading-in-java/> [Accessed 16 May 2020].
  */
 public class PanelCommander extends BuildUtilitiesVPV1 {
+	
 	JFrame frame = new JFrame("VirtualPet");
 	static JTabbedPane tabs; // making this static is what enables the thread action listeners to work
 	static boolean newPetAdded = false;
+	
+	/**
+	 * This is the exit listener, this will make sure that everything is saved when the program is closed
+	 */
 	WindowListener exitListener = new WindowAdapter() {
 		@Override
 		public void windowClosing(WindowEvent e) {
@@ -21,7 +28,6 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 			turnOff(); // this method is in initialiser
 		}
 	};
-	
 	
 	//List of all panels
 	StartPanel SP;
@@ -33,14 +39,10 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 	InteractPetPanel IPP;
 	JPanel interactPetPanel = new JPanel( null );
 	
-	
-	/*
-	 * This Constructor is just to test
+
+	/**
+	 * This method is to set the frame size for the components on the JFrame
 	 */
-	public PanelCommander() {
-		//frameSizeCalculator();
-	}
-	
 	public void frameReziser() {
 		Thread frameResizerThread = new Thread ( new Runnable() {
 			@Override
@@ -55,26 +57,18 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 						//this is if there is a change in size
 						frameSizeX = tmpFrameSizeX;
 						frameSizeY = tmpFrameSizeY;
-						
-						//set up object with two params - frame size - re-add to the tabs
-						//reInit all of the frame sizes
-						
 					}
-					//check if  currentSize is different to lastSize
 					
-					//resize all panels if so
-					
-					
-					//delay
 					delay(5000);
-				} // EndWhile
-				
+				}
 			}
-		}
-		);
+		} );
 		frameResizerThread.start();
 	}
 	
+	/**
+	 * This method is to calculate the size of the window and set it to the class variable
+	 */
 	public void frameSizeCalculator() {
 		printt( "Set Frame Sizes" );
 		recFrame = frame.getBounds();
@@ -101,7 +95,7 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 	public void initFrame() {
 		printt( "Initialising the frame" );
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.frame.setSize(400, 400);
+		this.frame.setSize(700, 400);
 		this.frame.setMinimumSize( new Dimension(350, 400) );
 		this.frame.addWindowListener(exitListener);//this adds the exit Listener
 		this.frame.setLayout(null);
@@ -137,16 +131,16 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 		try {
 			//Synchronise the ending of the thread
 			printt( "Syncing Threads" );
-			buildStartPanel.join();
-			buildNewPetPanel.join();
-			buildExistingPetPanel.join();
-			buildInteractPetPanel.join();
-			
 			printt( "Returning panels" );
+			buildStartPanel.join();
 			this.startPanel = SP.returnPanel();
+			buildNewPetPanel.join();
 			this.newPetPanel = NPP.returnPanel();
+			buildExistingPetPanel.join();
 			this.existingPetPanel = EPP.returnPanel();
+			buildInteractPetPanel.join();
 			this.interactPetPanel = IPP.returnPanel(); // this needs to be updated on the fly
+			
 			initTabs();
 				
 		} catch ( InterruptedException e) {
@@ -160,7 +154,7 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 	 */
 	public void initTabs() {
 		printt( "Initialising Tabs" );
-		tabs = new JTabbedPane(); // need to think if this is going to be needed here
+		tabs = new JTabbedPane();
 		tabs.setSize(frameSizeX - 16, frameSizeY + 10 );
 		tabs.setLocation(0, -50);
 		
@@ -185,9 +179,7 @@ public class PanelCommander extends BuildUtilitiesVPV1 {
 		//moved this - the frame would show before it was ready to
 		this.frame.add(tabs);
 		this.frame.setVisible(true);
-
 	}
-	
 	
 	/**
 	 * This makes the user see the New pet Panel

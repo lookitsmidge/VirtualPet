@@ -3,9 +3,8 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /**
- * This Class 
+ * This Class will be where the panel is built that is for the user to make a new pet
  * @author James Martland 24233781
- *
  */
 public class NewPetPanel extends PanelCommander implements ActionListener, Runnable{
 	
@@ -23,7 +22,7 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 	JLabel lblType = new JLabel();
 	String[] comboType_data = {"Please Choose", "Cat", "Chicken", "Dog", "Goat", "Goose"};
 	
-	//this is because Eclipse was annoying me about this ComboBox
+	// this is because Eclipse was annoying me about this ComboBox
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	JComboBox comboType = new JComboBox(comboType_data);
 	
@@ -46,14 +45,12 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 		setTag( "NPPanel" );
 		
 		//adding all of the components
-		int offset = 30; // bc this panel messes up due to the Tabbed pane ( ignore )
-		
+		int offset = 30; // because this panel messes up due to the Tabbed pane ( ignore )
 				
 		makeGridX( 2 );
 		int col1 = getXPos();
 		int col2 = nextXPos();
 		makeGridY( 4 );
-		
 				
 		addLabelL(lblName, newPetPanel, col1, getYPos() + offset, "Name Of Pet:");
 
@@ -127,19 +124,7 @@ public class NewPetPanel extends PanelCommander implements ActionListener, Runna
 					printt( "You have used an illegal character" );
 					optPane( "You Must Not Use Illegal Characters" );
 				}
-			}// this should be the end of the AE			
-			
-			// check name doesn't exist - lookup check
-			
-			//check for illegal characters
-			
-			//check type has been selected
-			
-			//create pet
-			
-			//clear fields
-			
-			
+			}
 		}
 	}
 }

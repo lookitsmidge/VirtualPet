@@ -1,6 +1,7 @@
 package virtualPetInterface.Panels;
 import javax.swing.*;
 import java.awt.event.*;
+
 /**
  * This class is the panel that is loaded when the program is started - this is the first screen that the user should see
  * ( other than the Command Line - that logs everything )
@@ -17,7 +18,7 @@ public class StartPanel extends PanelCommander  implements ActionListener, Runna
 	
 	
 	/**
-	 * this is the override method for running the thread
+	 * This is the override method for running the thread
 	 */
 	@Override
 	public void run() {
