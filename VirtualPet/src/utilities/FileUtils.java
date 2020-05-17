@@ -29,6 +29,8 @@ public class FileUtils extends ProcessorTemplate {
 			File details = new File(this.filePath);
 			if ( details.createNewFile() ) {
 				// the file has been created
+				//this is ran if the file is empty, as this stops arrayIndexOutOfBounds Exception
+				otWrite("Dog,Max,4" + spacer + "Cat,Toffee,2");
 				// continue
 			} else {
 				//file already exists
